@@ -1,6 +1,6 @@
 # Workshop 2B — il materiale
 
-Il progetto su cui si lavora è in [`repo-claudepress/`](repo-claudepress/): i team lo scaricano con `degit` e ne fanno il loro repo (vedi [`doc-studenti/`](doc-studenti/), Passo 1).
+Il progetto su cui si lavora è in [`repo-claudepress/`](repo-claudepress/): i team lo scaricano con `degit` e ne fanno il loro repo (vedi [`doc-studenti/00-si-parte.md`](doc-studenti/00-si-parte.md)).
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ Il progetto su cui si lavora è in [`repo-claudepress/`](repo-claudepress/): i t
 
 ## Da dove si comincia
 
-**I partecipanti:** [`doc-studenti/`](doc-studenti/), che si apre già sul primo passo in sala, e a casa [`_01-prima-di-venire.md`](doc-studenti/_01-prima-di-venire.md).
+**I partecipanti:** [`doc-studenti/`](doc-studenti/), che rimanda al primo passo in sala, e a casa [`_01-prima-di-venire.md`](doc-studenti/_01-prima-di-venire.md).
 
 **Chi insegna:**
 

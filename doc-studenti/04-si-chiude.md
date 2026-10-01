@@ -3,7 +3,7 @@
 # Si chiude — insieme
 
 Un portatile solo sullo schermo grande, gli altri due a portata di mano. 
-**Alla tastiera va chi se la sente**, e meglio se non è chi ha guidato stamattina in [`README.md`](README.md): nell'arco della giornata la tastiera passa di mano, e chi guida impara più in fretta degli altri due.
+**Alla tastiera va chi se la sente**, e meglio se non è chi ha guidato stamattina in [`00-si-parte.md`](00-si-parte.md): nell'arco della giornata la tastiera passa di mano, e chi guida impara più in fretta degli altri due.
 
 > Non serve che sia una persona in particolare: le skill e il subagent `smoke-test` ce li avete tutti e tre da stamattina, arrivati con il `git pull` dell'allineamento, e al repo del team siete tutti collaboratori. Chi guida lancia i comandi perché ha la tastiera, non perché possiede qualcosa.
 
