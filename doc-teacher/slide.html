@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClaudeTrips — slide del workshop</title>
+<style>
+  /* ---- palette (stessa del vecchio pptx) ---------------------------------- */
+  :root {
+    --ink: #16191D; --ink-2: #1F252A; --paper: #F6F6F4; --white: #FFFFFF;
+    --teal: #0E6B60; --teal-light: #4CBFAE; --teal-bg: #E3EFEC;
+    --gray: #6B7178; --gray-light: #9AA1A8; --line: #DFDFDA;
+    --rust: #B03F12; --rust-bg: #F7E9E2;
+    --serif: Cambria, Georgia, "Times New Roman", serif;
+    --sans: Calibri, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "Courier New", ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; color: var(--ink); font-family: var(--sans); }
+
+  /* ---- palco 16:9, scalato al viewport ------------------------------------ */
+  #stage { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; }
+  .slide {
+    width: 960px; height: 540px; padding: 48px 56px; position: absolute;
+    background: var(--paper); display: none; flex-direction: column;
+    transform: scale(var(--scale, 1)); transform-origin: center;
+  }
+  .slide.active { display: flex; }
+  .slide.dark { background: var(--ink); color: var(--paper); }
+  .slide.dark::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 12px; background: var(--teal-light); }
+
+  /* ---- tipografia -------------------------------------------------------- */
+  .kicker { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .kicker::before { content: ""; width: 10px; height: 10px; background: var(--teal); }
+  .dark .kicker { color: var(--teal-light); } .dark .kicker::before { background: var(--teal-light); }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.1; margin: 10px 0 0; letter-spacing: -.01em; }
+  h1.big { font-size: 60px; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.15; margin: 8px 0 0; }
+  p { margin: 0; font-size: 15px; line-height: 1.45; }
+  .lead { font-size: 18px; color: var(--gray); margin-top: 14px; max-width: 760px; }
+  .dark .lead { color: var(--gray-light); }
+  .muted { color: var(--gray); }
+  .note { margin-top: auto; font-size: 13px; color: var(--gray); border-top: 1px solid var(--line); padding-top: 10px; }
+  .dark .note { border-color: var(--ink-2); color: var(--gray-light); }
+  code, pre { font-family: var(--mono); }
+  code { font-size: .95em; background: var(--teal-bg); padding: 1px 5px; border-radius: 3px; }
+  .dark code { background: var(--ink-2); color: var(--teal-light); }
+  pre { background: var(--ink); color: var(--paper); font-size: 14px; line-height: 1.5; padding: 18px 22px; margin: 18px 0 0; border-left: 5px solid var(--teal-light); white-space: pre-wrap; }
+  strong { font-weight: 700; }
+
+  /* ---- griglie e card ----------------------------------------------------- */
+  .cols { display: grid; gap: 24px; margin-top: 22px; }
+  .cols.two { grid-template-columns: 1fr 1fr; } .cols.three { grid-template-columns: repeat(3, 1fr); } .cols.four { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--white); border: 1px solid var(--line); padding: 16px 18px; }
+  .card.teal { background: var(--teal-bg); border-color: transparent; }
+  .card.rust { background: var(--rust-bg); border-color: transparent; }
+  .card.ink { background: var(--ink); color: var(--paper); border-color: transparent; }
+  .card .t { font-family: var(--mono); font-weight: 700; color: var(--teal); font-size: 15px; }
+  .card h3 { margin: 6px 0 4px; font-size: 17px; font-weight: 700; }
+  .card p { font-size: 13.5px; color: var(--gray); }
+  .card.ink p { color: var(--gray-light); }
+  .stat { display: flex; gap: 40px; margin-top: auto; }
+  .stat b { display: block; font-family: var(--serif); font-size: 44px; font-weight: 400; color: var(--teal-light); line-height: 1; }
+  .stat span { font-size: 13px; color: var(--gray-light); letter-spacing: .06em; text-transform: uppercase; }
+  ul { margin: 8px 0 0; padding-left: 18px; font-size: 15px; line-height: 1.5; }
+  li + li { margin-top: 4px; }
+  .steps { display: grid; gap: 12px; margin-top: 20px; }
+  .step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  .step .n { font-family: var(--serif); font-size: 26px; color: var(--teal); line-height: 1; }
+  .step h3 { margin: 0 0 2px; font-size: 16px; }
+  .step p { font-size: 13.5px; color: var(--gray); }
+  table { border-collapse: collapse; width: 100%; margin-top: 18px; font-size: 14.5px; }
+  th { text-align: left; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); padding: 0 12px 8px; }
+  td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr.alt td { background: var(--white); }
+  td.t { font-family: var(--mono); font-weight: 700; color: var(--teal); white-space: nowrap; }
+  td.k { font-family: var(--mono); }
+  .flow { display: grid; grid-template-columns: 200px 1fr; gap: 24px; margin-top: 22px; align-items: stretch; }
+  .flow .boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .flow .card { text-align: center; padding: 14px; }
+  .arrow { font-size: 13px; color: var(--gray); margin-top: 8px; }
+  .rules { margin-top: 20px; background: var(--white); border: 1px solid var(--line); padding: 16px 20px; }
+  .rules .h { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); font-weight: 700; }
+  .rules ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 10px 0 0; padding: 0; list-style: none; counter-reset: r; }
+  .rules li { counter-increment: r; display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 14.5px; }
+  .rules li::before { content: counter(r); font-family: var(--serif); font-size: 24px; color: var(--teal); line-height: 1; }
+  .big-num { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 26px; }
+  .big-num b { display: block; font-family: var(--serif); font-size: 72px; font-weight: 400; line-height: 1; color: var(--teal); }
+  .big-num span { font-size: 16px; color: var(--gray); }
+  .quote { font-family: var(--serif); font-size: 24px; line-height: 1.35; margin-top: 18px; }
+  .quote.small { font-size: 20px; }
+  .dark .quote { color: var(--paper); }
+
+  /* ---- interfaccia ------------------------------------------------------- */
+  #counter { position: fixed; right: 14px; bottom: 10px; font: 12px var(--mono); color: #888; z-index: 5; }
+  #help { position: fixed; left: 14px; bottom: 10px; font: 12px var(--sans); color: #666; z-index: 5; }
+  #notes { position: fixed; left: 0; right: 0; bottom: 0; max-height: 34vh; overflow: auto; background: #111; color: #ddd; padding: 14px 24px 34px; font: 15px/1.5 var(--sans); border-top: 2px solid var(--teal-light); display: none; z-index: 4; }
+  #notes:empty::before { content: "— nessuna nota —"; color: #666; }
+  body.notes #notes { display: block; }
+  body.notes #stage { bottom: 34vh; }
+
+  @media print {
+    @page { size: 960px 540px; margin: 0; }
+    html, body { background: #fff; height: auto; }
+    #stage { position: static; display: block; }
+    .slide { display: flex !important; position: static; transform: none !important; page-break-after: always; }
+    #counter, #help, #notes { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 -->
+<section class="slide dark" data-notes="Due minuti, non di più. Dire solo: cosa costruiamo e che oggi è tutto pratico perché le basi le hanno già fatte a casa.">
+  <div class="kicker">Workshop 2 · Claude Code in team</div>
+  <h1 class="big">ClaudeTrips</h1>
+  <p class="lead">Due ore. In squadra, sulla stessa codebase, in parallelo.</p>
+  <div class="stat">
+    <div><b>20</b><span>partecipanti</span></div>
+    <div><b>5</b><span>team da 4</span></div>
+    <div><b>1</b><span>contratto</span></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-notes="Insistere: oggi non si spiega piu cos'e una skill. Chi non ha fatto il workshop 1 lo affianchi a qualcuno, ma non fermare la sala.">
+  <div class="kicker">Colpo d'occhio</div>
+  <h1>Oggi è tutto pratico</h1>
+  <div class="cols two">
+    <div class="card">
+      <div class="t">Workshop 1 · fatto da voi</div><h3>Le basi</h3>
+      <ul><li>Le regole di progetto</li><li>Plan mode</li><li>Skill e subagent</li><li>Il vostro plugin</li></ul>
+    </div>
+    <div class="card teal">
+      <div class="t">Oggi · due ore</div><h3>In team da 4</h3>
+      <ul><li>Pianificazione insieme</li><li>Tre track in parallelo</li><li>PR e adversarial review</li><li>Merge e demo</li></ul>
+    </div>
+  </div>
+  <p class="note">Non si rispiega niente delle basi. Parlo quattordici minuti in tutto: il resto del tempo è vostro.</p>
+</section>
+
+<!-- 3 -->
+<section class="slide" data-notes="Ognuno dei pezzi gia fatti e l'esempio di riferimento del suo tipo. Dirlo: quando devi scrivere un endpoint, guarda prima quello che c'e.">
+  <div class="kicker">Il prodotto</div>
+  <h1>ClaudeTrips — pacchetti vacanza</h1>
+  <div class="cols two" style="grid-template-columns: 1.3fr 1fr;">
+    <div>
+      <p class="lead" style="margin-top:0">Un piccolo tour operator vende pacchetti vacanza. Oggi il catalogo è un PDF su WhatsApp e le richieste dei clienti finiscono sui post-it. Costruiamo sito e backoffice.</p>
+      <div class="card" style="margin-top:22px">
+        <div class="t">Quello che c'è già</div>
+        <ul><li>il catalogo, l'elenco del backoffice e la loro API</li><li>quattro componenti condivisi, già finiti</li><li>il contratto condiviso</li></ul>
+      </div>
+    </div>
+    <div class="steps" style="margin-top:0">
+      <div class="card"><div class="t">S1</div><p>Creare un pacchetto e pubblicarlo <span class="muted">(backoffice)</span></p></div>
+      <div class="card"><div class="t">S2</div><p>Sfogliare e filtrare il catalogo <span class="muted">(sito)</span></p></div>
+      <div class="card"><div class="t">S3</div><p>Chiedere di essere richiamati <span class="muted">(sito)</span></p></div>
+      <div class="card"><div class="t">S4</div><p>Leggere e gestire le richieste <span class="muted">(backoffice)</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-notes="Consegnare qui i fogli dei team. Fermarsi mezzo minuto sulla T: nessuno lo indovina, e le sigle tornano nei branch e nei TODO.">
+  <div class="kicker">I ruoli</div>
+  <h1>Quattro persone, quattro mestieri</h1>
+  <p class="lead">La <strong>T sta per track</strong>, filone di lavoro. T0 ha il numero zero perché non ha un track suo: non scrive funzionalità, tiene il contratto e mergia.</p>
+  <div class="cols four" style="margin-top:auto">
+    <div class="card teal"><div class="t">T0</div><h3>Contract Owner</h3><p>contratto, merge, review</p></div>
+    <div class="card"><div class="t">T1</div><h3>Backend</h3><p>API e documentazione</p></div>
+    <div class="card"><div class="t">T2</div><h3>Frontend · sito</h3><p>catalogo e modulo di contatto</p></div>
+    <div class="card"><div class="t">T3</div><h3>Frontend · backoffice</h3><p>pacchetti e richieste</p></div>
+  </div>
+  <p class="note">Le sigle le ritrovate nel nome del branch, <code>t2/detail-page</code>, e nei finti che lasciate, <code>// TODO(T1):</code>.</p>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-notes="Trenta secondi. Il punto e uno solo: non le devono scrivere, ci sono gia. E se una non va bene la modificano, perche e roba loro.">
+  <div class="kicker">Nel repo</div>
+  <h1>Le skill ci sono già</h1>
+  <div class="cols two" style="gap:14px 20px">
+    <div class="card"><div class="t">Per tutti</div><ul><li><code>/contract-check</code> — prima di ogni commit</li><li><code>/adversarial-review</code> — prima della review umana</li></ul></div>
+    <div class="card teal"><div class="t">Per ruolo</div><ul><li><code>/new-endpoint</code> — T1</li><li><code>/new-page</code> — T2 e T3</li><li><code>/new-form</code> — T3 e T2</li><li><code>/pr-review</code> — T0</li></ul></div>
+  </div>
+  <p class="note">Più <code>/commit</code> e <code>/pr</code> dal plugin che avete costruito voi. <strong>Se una skill non fa quello che vi serve, modificatela:</strong> è nel repo del team ed è vostra.</p>
+</section>
+
+<!-- 6 -->
+<section class="slide" data-notes="Questo e l'unico discorso lungo della giornata. Otto minuti in tutto, tre slide.">
+  <div class="kicker">Kickoff</div>
+  <h1>Il problema vero non è il codice</h1>
+  <p class="quote">Fra un'ora avrete tre pezzi scritti da tre persone che non si sono viste.</p>
+  <p class="quote small" style="color:var(--gray)">O si incastrano, oppure avete tre pezzi bellissimi e niente che funziona.</p>
+  <p class="note">Tutto quello che facciamo nei prossimi venticinque minuti — il contratto, il piano, la divisione dei file — serve solo a quello. Non è burocrazia: è l'unica cosa che decide se alla fine avete un prodotto o tre rami.</p>
+</section>
+
+<!-- 7 -->
+<section class="slide" data-notes="Aprire src/contracts/trips.ts sul proiettore e scorrerlo mentre si dice questa cosa. Non correre: e il concetto piu prezioso della giornata.">
+  <div class="kicker">Kickoff</div>
+  <h1>Il contratto non sono solo gli endpoint</h1>
+  <div class="cols two" style="gap:14px 20px; flex:1; align-content:start; margin-bottom:14px">
+    <div class="step card"><div class="n">1</div><div><h3>I tipi di dominio</h3><p><code>TravelPackage</code>, <code>ContactRequest</code>, i valori ammessi</p></div></div>
+    <div class="step card teal"><div class="n">2</div><div><h3>Le richieste HTTP</h3><p>path, metodi, status code, forma degli errori</p></div></div>
+    <div class="step card"><div class="n">3</div><div><h3>I componenti condivisi</h3><p>già finiti, di T0: sito e backoffice li usano, non li toccano</p></div></div>
+  </div>
+  <p class="note">Se il 2 non è nel contratto, due persone su quattro scrivono contro API che si sono inventate.</p>
+</section>
+
+<!-- 8 -->
+<section class="slide" data-notes="Le tre regole vanno sulla lavagna e restano li per due ore. Il controllo sulla PR #0 e l'unico davvero bloccante.">
+  <div class="kicker">Kickoff</div>
+  <h1>Come si incastrano le due ore</h1>
+  <div class="flow">
+    <div>
+      <div class="card ink"><div class="t" style="color:var(--teal-light)">PR #0</div><h3>contratto</h3></div>
+      <p class="arrow">mergiata subito →</p>
+    </div>
+    <div>
+      <div class="boxes">
+        <div class="card"><div class="t">T1</div><h3>backend</h3></div>
+        <div class="card"><div class="t">T2</div><h3>sito</h3></div>
+        <div class="card"><div class="t">T3</div><h3>backoffice</h3></div>
+      </div>
+      <p class="arrow">in parallelo, file disgiunti, T0 mergia man mano</p>
+    </div>
+  </div>
+  <div class="rules">
+    <div class="h">Le tre regole</div>
+    <ol>
+      <li><span>Tocchi solo i file del tuo ticket</span></li>
+      <li><span>PR aperta entro 20 minuti, anche in draft</span></li>
+      <li><span><code>/adversarial-review</code> prima della review umana</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide" data-notes="La skill e gia nel repo. Va lanciata dopo aver aperto la PR e prima di chiedere la review a un umano.">
+  <div class="kicker">Il pezzo nuovo</div>
+  <h1>Adversarial review</h1>
+  <p class="lead">Il codice che stai per rivedere non è tuo. È di qualcuno che ha fretta, è bravo ma distratto, e vuole farlo entrare in main. <strong>Il tuo compito non è incoraggiarlo.</strong></p>
+  <ul style="columns:2; column-gap:32px; margin-top:12px">
+    <li>Ogni rilievo ha file, riga e uno scenario concreto che fallisce</li>
+    <li>Niente riscritture: prima si decide cosa è rotto</li>
+    <li>Massimo 7 rilievi, dal più grave</li>
+    <li>Chiude con la domanda che l'autore deve rispondere</li>
+  </ul>
+  <div class="cols two" style="margin-top:auto; gap:16px">
+    <div class="card rust"><div class="t" style="color:var(--rust)">Non è un rilievo</div><p>«Manca la gestione degli errori»</p></div>
+    <div class="card teal"><div class="t">Lo è</div><p>«In <code>route.ts:24</code>, se il body non è JSON valido la <code>await req.json()</code> lancia e il client riceve un 500 invece del 400 previsto dal contratto»</p></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide" data-notes="Cronometrare davvero, due minuti. La terza domanda e quella che tagliano: non lasciargliela tagliare.">
+  <div class="kicker">A 1:48</div>
+  <h1>La demo: due minuti a team</h1>
+  <div class="steps" style="margin-top:26px; gap:16px">
+    <div class="step"><div class="n">1</div><div><h3>Mostrate la story che funziona</h3><p>Dal vivo, non a parole.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h3>Una decisione che avete preso</h3><p>Di quelle che la story non aveva deciso per voi.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h3>Una cosa che rifareste diversa</h3><p>È da qui che esce il valore — ed è quella che si taglia se si corre.</p></div></div>
+  </div>
+  <p class="note">Decidete prima chi parla e cosa mostra. Due minuti passano in fretta.</p>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-notes="Chiudere qui. Non riassumere quello che hanno fatto: l'hanno fatto loro, lo sanno.">
+  <h1>Tre cose per lunedì</h1>
+  <div class="steps" style="margin-top:28px; gap:18px">
+    <div class="step"><div class="n">1</div><div><h3>Il contratto viene prima del codice</h3><p>Vale con un agente e vale senza. Solo che adesso non avete più la scusa del tempo.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h3>Il parallelismo si progetta assegnando i file</h3><p>Non ci si coordina meglio: si fa in modo che non serva coordinarsi.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h3>Una PR aperta presto vale più di una PR perfetta tardi</h3><p>Un branch sul vostro portatile, per il team, non esiste.</p></div></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide dark" data-notes="Ultima slide. Poi grazie e canale del workshop.">
+  <p class="quote" style="margin-top:auto; font-size:30px">A casa avete imparato a dire a Claude cosa conta nel vostro progetto.</p>
+  <p class="quote" style="font-size:30px; color:var(--teal-light); margin-bottom:auto">Oggi avete scoperto che è la stessa identica cosa che serve per far lavorare insieme quattro persone.</p>
+</section>
+
+</div>
+<div id="help">← → o spazio · <b>n</b> note · <b>f</b> schermo intero · stampa per il PDF</div>
+<div id="counter"></div>
+<div id="notes"></div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const counter = document.getElementById('counter');
+  const notes = document.getElementById('notes');
+  let i = Math.min(Math.max(parseInt(location.hash.slice(1) || '1', 10) - 1, 0), slides.length - 1) || 0;
+
+  function show(n) {
+    i = Math.min(Math.max(n, 0), slides.length - 1);
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    counter.textContent = `${i + 1} / ${slides.length}`;
+    notes.textContent = slides[i].dataset.notes || '';
+    history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fit() {
+    const stage = document.getElementById('stage').getBoundingClientRect();
+    const scale = Math.min(stage.width / 960, stage.height / 540);
+    document.documentElement.style.setProperty('--scale', scale);
+  }
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'n') { document.body.classList.toggle('notes'); fit(); }
+    else if (e.key === 'f') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  });
+  document.getElementById('stage').addEventListener('click', (e) => show(e.clientX < innerWidth / 2 ? i - 1 : i + 1));
+  let touchX = null;
+  addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX; touchX = null;
+    if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+  });
+  addEventListener('resize', fit);
+  addEventListener('hashchange', () => show(parseInt(location.hash.slice(1), 10) - 1));
+  fit(); show(i);
+</script>
+</body>
+</html>
