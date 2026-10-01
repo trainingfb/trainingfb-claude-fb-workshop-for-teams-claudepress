@@ -31,8 +31,10 @@ Adesso ne fai un repo, e lo pubblichi sul tuo profilo GitHub:
 git init -b main
 git add .
 git commit -m "chore: start from claudepress scaffold"
-gh repo create claudepress-team-1 --public --source=. --remote=origin --push
+gh repo create claudepress-team-<NUMERO-TAVOLO> --public --source=. --remote=origin --push
 ```
+
+> Al posto di `<NUMERO-TAVOLO>` metti il numero scritto sul foglietto del vostro tavolo, senza `< >`: per esempio `claudepress-team-3`.
 
 > IMPORTANTE: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
 
@@ -40,7 +42,7 @@ Poi, sempre chi guida, su GitHub: **Settings → Collaborators**, e aggiungi gli
 
 **Verifica**
 
-- [ ] il repo `claudepress-team-1` è su `https://github.com/[YOUR-GITHUB-USERNAME]?tab=repositories` (sostituisci `[YOUR-GITHUB-USERNAME]` con il tuo username di GitHub)
+- [ ] il repo `claudepress-team-<NUMERO-TAVOLO>` è su `https://github.com/[YOUR-GITHUB-USERNAME]?tab=repositories` (sostituisci `[YOUR-GITHUB-USERNAME]` con il tuo username di GitHub)
 - [ ] dentro c'è il progetto, con un solo commit
 - [ ] gli altri due hanno ricevuto e accettato l'invito
 
