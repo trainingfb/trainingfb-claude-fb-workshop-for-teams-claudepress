@@ -27,6 +27,11 @@ cd claudepress
 
 Adesso ne fai un repo, e lo pubblichi sul tuo profilo GitHub:
 
+> Al posto di `<NUMERO-TAVOLO>` metti il numero scritto sul foglietto del vostro tavolo, senza `< >`: per esempio `claudepress-team-3`.
+
+> IMPORTANTE: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
+
+
 ```bash
 git init -b main
 git add .
@@ -34,9 +39,6 @@ git commit -m "chore: start from claudepress scaffold"
 gh repo create claudepress-team-<NUMERO-TAVOLO> --public --source=. --remote=origin --push
 ```
 
-> Al posto di `<NUMERO-TAVOLO>` metti il numero scritto sul foglietto del vostro tavolo, senza `< >`: per esempio `claudepress-team-3`.
-
-> IMPORTANTE: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
 
 Poi, sempre chi guida, su GitHub: **Settings → Collaborators**, e aggiungi gli altri due.
 
@@ -72,6 +74,7 @@ npm run check
 - [ ] il progetto gira su `localhost:3000`
 - [ ] `npm run check` passa
 - [ ] `git status` è pulito — se non lo è, fermatevi e guardate cosa è cambiato
+  > Per buttare via tutte le modifiche e tornare al progetto appena scaricato: `git restore . && git clean -fd`
 
 ---
 
