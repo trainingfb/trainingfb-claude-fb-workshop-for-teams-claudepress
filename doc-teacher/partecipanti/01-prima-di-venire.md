@@ -41,6 +41,10 @@ Un blog con il suo CMS. Il sito pubblico legge, il backoffice scrive, e i due pe
 
 Qui non si spiega più cos'è una regola di progetto, una skill o un subagent: si usano e si scrivono. Se è la prima volta che ne senti parlare, guarda il materiale del workshop sulle basi prima di venire — sono due ore da solo.
 
+## Un account GitHub
+
+**Ogni partecipante deve avere il suo account GitHub.** In sala lavorerai in un team: uno crea il repo del team, gli altri vengono aggiunti come collaboratori, e ognuno fa push e apre pull request con il proprio account. Se non ce l'hai, crealo su [github.com/signup](https://github.com/signup) prima di venire, e confermalo dalla mail.
+
 ## Cosa deve esserci sul tuo portatile
 
 ```bash
@@ -50,7 +54,7 @@ gh --version          # GitHub CLI, serve per creare il repo del team e le PR
 claude --version      # Claude Code
 ```
 
-Se `gh` non è configurato: `gh auth login`.
+Se `gh` non è configurato: `gh auth login`, con il tuo account GitHub.
 
 ## La skill di design: scaldare il comando
 
@@ -89,6 +93,7 @@ Deve passare. Se non passa sul progetto appena scaricato, scrivilo in chat prima
 
 **Verifica**
 
+- [ ] un account GitHub tuo, confermato
 - [ ] Node 22+, `git`, `gh` autenticato, Claude Code
 - [ ] `npx --yes skills --version` stampa un numero
 - [ ] progetto scaricato, `npm install` fatto, `npm run dev` che parte
