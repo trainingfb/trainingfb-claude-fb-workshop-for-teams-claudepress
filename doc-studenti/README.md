@@ -1,3 +1,59 @@
+> **Workshop 2B — ClaudePress, in team.** Sei in sala? Parti da qui sotto. Sei a casa? Apri prima [`_01-prima-di-venire.md`](_01-prima-di-venire.md).
+
+<details>
+<summary><b>Indice di tutto il percorso</b></summary>
+
+### A casa
+
+| | |
+|---|---|
+| [`_01-prima-di-venire.md`](_01-prima-di-venire.md) | il setup, cosa costruiamo, cosa c'è già nel repo, cosa **non** si fa. Mezz'ora |
+
+È l'unica cosa da leggere prima. Se arrivi senza setup, blocchi anche altre due persone.
+
+### In sala: il tuo copione
+
+Tutto il resto della giornata sta qui dentro, e **non ti manda da nessun'altra parte**: dice cosa fare, in che ordine, con quale prompt, e cosa stanno facendo intanto gli altri due.
+
+> **Il numero è il momento della giornata**, non il file: `01` e `03` sono tre file ciascuno, uno per ruolo, e si fanno **in simultanea**. Tu apri quello con la tua sigla, gli altri due aprono il loro.
+
+#### Insieme
+
+| | | |
+|---|---|---|
+| **00** | **questa pagina** | il repo del team, i ruoli, il contratto, le tre decisioni |
+
+#### Le fondamenta — ognuno il suo file, ma allo stesso tavolo
+
+| | | |
+|---|---|---|
+| **01** | il file del tuo ruolo: [`T1`](01-T1-fondamenta.md) · [`T2`](01-T2-fondamenta.md) · [`T3`](01-T3-fondamenta.md) | i tuoi componenti condivisi e il tuo strumento: una skill o un subagent |
+| **02** | [`02-si-allinea.md`](02-si-allinea.md) | il lavoro degli altri due, l'identità visiva, il controllo prima di dividersi |
+
+#### Da solo — apri solo il tuo
+
+| | | |
+|---|---|---|
+| **03** | [`03-T1-sito.md`](03-T1-sito.md) | **T1** · home, dettaglio, 404 |
+| **03** | [`03-T2-cms-elenco.md`](03-T2-cms-elenco.md) | **T2** · tabella ed eliminazione |
+| **03** | [`03-T3-cms-form.md`](03-T3-cms-form.md) | **T3** · creazione e modifica |
+
+#### Di nuovo insieme
+
+| | | |
+|---|---|---|
+| **04** | [`04-si-chiude.md`](04-si-chiude.md) | le regole imparate, i merge, la demo |
+
+### Quando sei bloccato
+
+| | |
+|---|---|
+| [`_02-se-qualcosa-va-storto.md`](_02-se-qualcosa-va-storto.md) | le dieci cose che succedono davvero |
+
+Il contratto non è in questa cartella: è codice, e si legge dove vive — `claudepress/src/contracts/blog.ts`.
+
+</details>
+
 DURATA: 15-20 minuti
 
 > **Tutti e tre allo stesso tavolo, ma alla tastiera uno solo.** Questo file si fa su un portatile solo: si clona in tre soltanto all'ultimo passo.

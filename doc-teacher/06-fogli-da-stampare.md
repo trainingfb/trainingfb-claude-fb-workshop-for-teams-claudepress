@@ -5,7 +5,7 @@ tavoli prima che entrino. Serve a far trovare il proprio posto senza
 organizzare niente a voce.
 
 > **Da portare: i foglietti con i numeri dei tavoli.** Uno per tavolo, ben
-> visibile. Al Passo 1 di `00-si-parte.md` chi guida chiama il repo
+> visibile. Al Passo 1 di `doc-studenti/README.md` chi guida chiama il repo
 > `claudepress-team-<numero del tavolo>`: senza il numero davanti, i cinque
 > team creano tutti `claudepress-team-1` e a fine giornata non sai più quale
 > repo è di chi.

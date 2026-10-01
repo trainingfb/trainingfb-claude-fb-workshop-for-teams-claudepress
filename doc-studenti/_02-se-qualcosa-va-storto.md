@@ -1,5 +1,5 @@
 > **Da aprire quando serve.**
-> [← indice](_README.md)
+> [← indice](README.md)
 
 # Se qualcosa va storto
 

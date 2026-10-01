@@ -1,5 +1,5 @@
 > **Tutto quello che c'è da fare e da sapere prima del workshop. Mezz'ora, a casa.**
-> [← indice](_README.md)
+> [← indice](README.md)
 
 # Prima di venire
 

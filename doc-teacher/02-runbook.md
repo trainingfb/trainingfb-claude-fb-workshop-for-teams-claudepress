@@ -14,8 +14,8 @@ dire** sta in [03](03-guida.md), i **piani B** in [05](05-piani-b.md), la
 
 | Ora | Step | Cosa | Chi parla |
 |---|---|---|---|
-| **0:00 – 0:10** | [00](../doc-studenti/00-si-parte.md) | Team, ruoli, repo del team, cloni | tu 6′ |
-| 0:10 – 0:18 | [00](../doc-studenti/00-si-parte.md) | Kickoff: la story e il contratto | tu 8′ |
+| **0:00 – 0:10** | [00](../doc-studenti/README.md) | Team, ruoli, repo del team, cloni | tu 6′ |
+| 0:10 – 0:18 | [00](../doc-studenti/README.md) | Kickoff: la story e il contratto | tu 8′ |
 | 0:18 – 0:43 | [01](../doc-studenti/01-T1-fondamenta.md) | Pianificazione, **un solo PC** | loro |
 | 0:43 – 0:48 | — | PR #0 mergiata, tutti `git pull` | tu |
 | 0:48 – 1:33 | [03](../doc-studenti/03-T1-sito.md) | Lavoro parallelo | loro |
