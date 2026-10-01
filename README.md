@@ -1,6 +1,6 @@
 # Workshop 2B — il materiale
 
-Il progetto su cui si lavora è in [`../claudepress/`](../claudepress/), fuori da questa cartella.
+Il progetto su cui si lavora è in [`repo-claudepress/`](repo-claudepress/): i team lo scaricano con `degit` e ne fanno il loro repo (vedi [`doc-studenti/00-si-parte.md`](doc-studenti/00-si-parte.md)).
 
 | | |
 |---|---|

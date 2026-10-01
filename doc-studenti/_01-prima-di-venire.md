@@ -46,7 +46,7 @@ Qui non si spiega più cos'è una regola di progetto, una skill o un subagent: s
 ```bash
 node --version        # 22 o superiore
 git --version
-gh --version          # GitHub CLI, serve per il fork e le PR
+gh --version          # GitHub CLI, serve per creare il repo del team e le PR
 claude --version      # Claude Code
 ```
 
@@ -67,13 +67,13 @@ Deve stampare un numero di versione. La prima volta scarica qualche megabyte: è
 ## Il progetto
 
 ```bash
-git clone <URL-DEL-REPO> claudepress-workshop
+npx degit trainingfb/trainingfb-claude-fb-workshop-for-teams-claudepress/repo-claudepress claudepress-workshop
 cd claudepress-workshop
 npm install
 npm run dev
 ```
 
-> Questo clone serve solo a controllare il setup. In sala clonerete il repo del **team**, in una cartella nuova: è lì che lavorerete tutto il giorno.
+> Questa copia serve solo a controllare il setup. In sala chi guida ne scaricherà una nuova per creare il repo del **team**, e gli altri lo cloneranno: è lì che lavorerete tutto il giorno.
 
 Apri <http://localhost:3000> e clicca anche su **Backoffice**: su tutte e due vedi una pagina che dice che quel pezzo non è ancora stato scritto, e quale prompt provare. **È giusto così**: sono i segnaposto che sostituirai tu. Quello che c'è e quello che non c'è è spiegato più sotto, in «Cosa trovi nel repo».
 
@@ -83,7 +83,7 @@ Poi:
 npm run check
 ```
 
-Deve passare. Se non passa sul repo appena clonato, scrivilo in chat prima del workshop: è un problema mio, non tuo.
+Deve passare. Se non passa sul progetto appena scaricato, scrivilo in chat prima del workshop: è un problema mio, non tuo.
 
 ## La checklist del setup
 
@@ -91,7 +91,7 @@ Deve passare. Se non passa sul repo appena clonato, scrivilo in chat prima del w
 
 - [ ] Node 22+, `git`, `gh` autenticato, Claude Code
 - [ ] `npx --yes skills --version` stampa un numero
-- [ ] repo clonato, `npm install` fatto, `npm run dev` che parte
+- [ ] progetto scaricato, `npm install` fatto, `npm run dev` che parte
 - [ ] `npm run check` che passa
 
 Fatto questo, restano da leggere le due sezioni qui sotto — dieci minuti — e domani non perdi tempo.

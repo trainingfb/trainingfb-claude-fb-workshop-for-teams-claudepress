@@ -52,7 +52,7 @@ T0 apre la PR #0 e la mergia SUBITO
 
 <br>
 
-## Il vostro fork
+## Il vostro repo
 
 ```
 Repo del team:  ________________________________

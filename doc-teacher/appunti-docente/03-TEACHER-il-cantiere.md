@@ -12,7 +12,7 @@ Il costo c'è ed è onesto: quaranta minuti su centoventi non sono codice della 
 
 | | | |
 |---|---|---|
-| 0–10 | setup | ruoli, fork, clone |
+| 0–10 | setup | ruoli, repo del team, clone |
 | **10–50** | **fase 1 · il cantiere** | insieme |
 | **50–95** | **fase 2 · il proprio pezzo** | da soli |
 | **95–115** | **fase 3 · rimettere insieme** | insieme |

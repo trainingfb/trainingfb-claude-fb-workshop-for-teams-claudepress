@@ -16,42 +16,44 @@ Sei passi per mettervi d'accordo: il repo del team, chi fa cosa, il contratto, l
 
 **Lo fa chi guida.** Le altre due persone guardano.
 
+Si scarica solo il progetto, senza la documentazione del workshop, in una **cartella nuova** (non in quella clonata a casa):
+
 ```bash
-gh repo fork https://github.com/trainingfb/claude-fb-workshop-claudepress --clone=false --fork-name claudepress-team-1
+npx degit trainingfb/trainingfb-claude-fb-workshop-for-teams-claudepress/repo-claudepress claudepress
+cd claudepress
 ```
 
-> IMPORTANTE: Il comando crea una copia del progetto sul tuo profilo GitHub, la rinomina, e non la scarica sul tuo PC. La scarichi tu al passo dopo.
+> `degit` scarica una cartella da GitHub senza la sua storia git: quello che hai adesso è solo codice, non ancora un repo.
 
-**Verifica**
-Il progetto dovrebbe essere visibile su:
-https://github.com/[YOUR-GITHUB-USERNAME]?tab=repositories
+Adesso ne fai un repo, e lo pubblichi sul tuo profilo GitHub:
 
-sostituisci [YOUR-GITHUB-USERNAME] con il tuo username di GitHub
+```bash
+git init -b main
+git add .
+git commit -m "chore: start from claudepress scaffold"
+gh repo create claudepress-team-1 --public --source=. --remote=origin --push
+```
+
+> IMPORTANTE: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
 
 Poi, sempre chi guida, su GitHub: **Settings → Collaborators**, e aggiungi gli altri due.
 
 **Verifica**
 
-- [ ] il repo del team esiste
+- [ ] il repo `claudepress-team-1` è su `https://github.com/[YOUR-GITHUB-USERNAME]?tab=repositories` (sostituisci `[YOUR-GITHUB-USERNAME]` con il tuo username di GitHub)
+- [ ] dentro c'è il progetto, con un solo commit
 - [ ] gli altri due hanno ricevuto e accettato l'invito
 
 ---
 
-## Passo 2 · Chi guida clona e installa
+## Passo 2 · Chi guida installa
 
-**Solo il portatile guida.** Gli altri due non clonano ancora: lo faranno al Passo 6, quando il repo avrà già dentro le vostre decisioni.
-
-Si clona **il repo del team**, non l'originale, e in una **cartella nuova**, non in quella clonata a casa:
+**Solo il portatile guida.** Il progetto ce l'hai già: l'hai appena creato tu, nella cartella `claudepress`. Gli altri due non clonano ancora: lo faranno al Passo 6, quando il repo avrà già dentro le vostre decisioni.
 
 ```bash
-git clone <URL-DEL-REPO-DEL-TEAM> claudepress
-cd claudepress
-gh repo set-default <URL-DEL-REPO-DEL-TEAM>
 npm install
 npm run dev
 ```
-
-> `gh repo set-default` serve perché il vostro repo è un fork: senza, `gh` propone come base il repo originale, e la pull request di oggi pomeriggio finirebbe dal docente invece che nel repo del team.
 
 Apri <http://localhost:3000>: vedi una pagina che dice che il sito non è ancora stato scritto. **È giusto.**
 
@@ -89,7 +91,7 @@ Come sceglierli, in due minuti e non in dieci:
 - **T2** è il più corto, e in cambio scrive lo strumento — un subagent — che alla fine serve a tutti e tre.
 - **T1** è quello che si vede per primo nella demo.
 
-Il ruolo non c'entra con chi guida adesso: chi ha fatto il fork può essere T1, T2 o T3.
+Il ruolo non c'entra con chi guida adesso: chi ha creato il repo può essere T1, T2 o T3.
 
 **Verifica**
 
@@ -209,7 +211,6 @@ git push origin main
 ```bash
 git clone <URL-DEL-REPO-DEL-TEAM> claudepress
 cd claudepress
-gh repo set-default <URL-DEL-REPO-DEL-TEAM>
 npm install
 npm run dev
 ```

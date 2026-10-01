@@ -14,7 +14,7 @@ dire** sta in [03](03-guida.md), i **piani B** in [05](05-piani-b.md), la
 
 | Ora | Step | Cosa | Chi parla |
 |---|---|---|---|
-| **0:00 – 0:10** | [01](../../workshop-2-team/workshop/01-il-tuo-team.md) | Team, ruoli, fork, cloni | tu 6′ |
+| **0:00 – 0:10** | [01](../../workshop-2-team/workshop/01-il-tuo-team.md) | Team, ruoli, repo del team, cloni | tu 6′ |
 | 0:10 – 0:18 | [02](../../workshop-2-team/workshop/02-la-story.md) | Kickoff: la story e il contratto | tu 8′ |
 | 0:18 – 0:43 | [03](../../workshop-2-team/workshop/03-la-pianificazione.md) | Pianificazione, **un solo PC** | loro |
 | 0:43 – 0:48 | — | PR #0 mergiata, tutti `git pull` | tu |
@@ -29,7 +29,7 @@ Parli per quattordici minuti in tutto. Il resto lo fanno loro, ed è il punto.
 
 | Quando | Controllo | Se è no |
 |---|---|---|
-| 0:08 | Tutti hanno clonato **il fork**, non l'originale | si riclona, sono due minuti |
+| 0:08 | Tutti hanno clonato **il repo del team**, non la copia scaricata a casa | si riclona, sono due minuti |
 | 0:08 | Tutti hanno `npm run dev` che risponde | coppia con il vicino, non si aspetta |
 | 0:43 | Tutti e cinque i team hanno mergiato la PR #0 | **non si va avanti** |
 | 0:58 | T2 e T3 non stanno aspettando T1 | mandali all'escape hatch del ticket |

@@ -11,7 +11,7 @@ sta bloccando?»**, non «come va», perché a «come va» rispondono tutti bene
 
 ---
 
-## Team, ruoli, fork — 10′ (tuoi: 6′)
+## Team, ruoli, repo del team — 10′ (tuoi: 6′)
 
 **Cosa dire**, in tre minuti:
 
@@ -28,11 +28,11 @@ schermi.
 
 **Il controllo che salta sempre**
 
-Il fork. Qualcuno continua a lavorare sul clone dell'originale e se ne accorge
+Il repo del team. Qualcuno continua a lavorare sulla copia scaricata a casa e se ne accorge
 solo quando prova a pushare. Tavolo per tavolo:
 
-- [ ] il fork del team esiste
-- [ ] gli altri tre sono collaborator **e hanno clonato il fork**
+- [ ] il repo del team esiste
+- [ ] gli altri tre sono collaborator **e hanno clonato il repo del team**
 - [ ] ognuno sa qual è il suo ticket
 - [ ] `npm run dev` risponde su tutti e quattro i portatili
 

@@ -22,4 +22,4 @@ Qui c'è solo roba mia. Quello che va in mano ai partecipanti è in [`../parteci
 
 ## Il progetto
 
-Il codice sta in [`../../claudepress/`](../../claudepress/), **fuori da questa cartella**: è un progetto vero, e il materiale del workshop non ci entra dentro. È quello che i team forkano.
+Il codice sta in [`../../repo-claudepress/`](../../repo-claudepress/), **separato da questa cartella**: è un progetto vero, e il materiale del workshop non ci entra dentro. È la cartella che i team scaricano con `degit` per creare il loro repo.

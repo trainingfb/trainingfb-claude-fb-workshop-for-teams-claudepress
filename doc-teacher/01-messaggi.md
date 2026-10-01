@@ -110,7 +110,7 @@ Mandalo la sera stessa, non il giorno dopo: la sera se lo leggono ancora.
 > Grazie a tutti, bella giornata 🙏
 >
 > Tutto quello che avete costruito:
-> - i cinque fork con le PR mergiate: <link>
+> - i cinque repo dei team con le PR mergiate: <link>
 > - le skill che avete modificato durante la giornata: <link>
 > - il materiale, se volete rileggerlo: `workshop/README.md`
 >
