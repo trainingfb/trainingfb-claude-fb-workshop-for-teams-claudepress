@@ -1,11 +1,11 @@
 > **Tutto quello che c'è da fare e da sapere prima del workshop. Mezz'ora, a casa.**
-> [← indice](README.md)
+> [← indice](_README.md)
 
 # Prima di venire
 
 Questo file si legge **una volta sola, a casa**. In sala non ti servirà: lì c'è il percorso, che ti dice passo per passo cosa fare.
 
-L'unico altro file che ti servirà è [`02-se-qualcosa-va-storto.md`](02-se-qualcosa-va-storto.md), e solo quando qualcosa si rompe.
+L'unico altro file che ti servirà è [`_02-se-qualcosa-va-storto.md`](_02-se-qualcosa-va-storto.md), e solo quando qualcosa si rompe.
 
 > **Le basi si danno per fatte.** Qui non si spiega più cos'è una skill o un subagent: si scrivono. Se è la prima volta che ne senti parlare, guarda il materiale del workshop sulle basi prima di venire.
 

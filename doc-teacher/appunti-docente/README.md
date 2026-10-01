@@ -1,6 +1,6 @@
 # ClaudePress — materiale per il docente
 
-Qui c'è solo roba mia. Quello che va in mano ai partecipanti è in [`../partecipanti/`](../partecipanti/).
+Qui c'è solo roba mia. Quello che va in mano ai partecipanti è in [`../../doc-studenti/`](../../doc-studenti/_README.md).
 
 | | | Cos'è |
 |---|---|---|

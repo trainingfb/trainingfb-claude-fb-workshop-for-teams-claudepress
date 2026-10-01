@@ -4,7 +4,7 @@
 
 20 persone, **due ore**, 5 team da 4. Questa è solo la sequenza: il **cosa
 dire** sta in [03](03-guida.md), i **piani B** in [05](05-piani-b.md), la
-**preparazione** in [00](00-preparazione.md).
+**preparazione** nei [fogli da stampare](06-fogli-da-stampare.md).
 
 > Le basi arrivano dal workshop 1, fatto da loro a casa. Qui non si spiega più
 > cos'è una skill, cos'è `CLAUDE.md` o come funziona il plan mode. Se qualcuno
@@ -14,13 +14,13 @@ dire** sta in [03](03-guida.md), i **piani B** in [05](05-piani-b.md), la
 
 | Ora | Step | Cosa | Chi parla |
 |---|---|---|---|
-| **0:00 – 0:10** | [01](../../workshop-2-team/workshop/01-il-tuo-team.md) | Team, ruoli, repo del team, cloni | tu 6′ |
-| 0:10 – 0:18 | [02](../../workshop-2-team/workshop/02-la-story.md) | Kickoff: la story e il contratto | tu 8′ |
-| 0:18 – 0:43 | [03](../../workshop-2-team/workshop/03-la-pianificazione.md) | Pianificazione, **un solo PC** | loro |
+| **0:00 – 0:10** | [00](../doc-studenti/00-si-parte.md) | Team, ruoli, repo del team, cloni | tu 6′ |
+| 0:10 – 0:18 | [00](../doc-studenti/00-si-parte.md) | Kickoff: la story e il contratto | tu 8′ |
+| 0:18 – 0:43 | [01](../doc-studenti/01-T1-fondamenta.md) | Pianificazione, **un solo PC** | loro |
 | 0:43 – 0:48 | — | PR #0 mergiata, tutti `git pull` | tu |
-| 0:48 – 1:33 | [05](../../workshop-2-team/workshop/05-lavorare-in-parallelo.md) | Lavoro parallelo | loro |
-| 1:33 – 1:48 | [06](../../workshop-2-team/workshop/06-integrazione-e-demo.md) | Integrazione, `main` verde | loro |
-| 1:48 – 1:58 | [06](../../workshop-2-team/workshop/06-integrazione-e-demo.md) | Demo, 2 minuti a team | loro |
+| 0:48 – 1:33 | [03](../doc-studenti/03-T1-sito.md) | Lavoro parallelo | loro |
+| 1:33 – 1:48 | [04](../doc-studenti/04-si-chiude.md) | Integrazione, `main` verde | loro |
+| 1:48 – 1:58 | [04](../doc-studenti/04-si-chiude.md) | Demo, 2 minuti a team | loro |
 | 1:58 – 2:00 | — | Chiusura | tu |
 
 Parli per quattordici minuti in tutto. Il resto lo fanno loro, ed è il punto.

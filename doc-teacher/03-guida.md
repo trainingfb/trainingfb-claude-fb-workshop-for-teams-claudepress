@@ -144,9 +144,9 @@ No. Rispondi a tutti nella PR, sistema quelli che ti convincono. Rifiutarne
 qualcuno è parte dell'esercizio.
 
 *«Non sono pratico di git, come apro la PR?»*
-Mandalo a [`guide/git-e-pr.md`](../../workshop-2-team/workshop/guide/git-e-pr.md) invece di spiegarglielo:
+Mandalo a [`_02-se-qualcosa-va-storto.md`](../doc-studenti/_02-se-qualcosa-va-storto.md) e alla skill `/pr` del progetto invece di spiegarglielo:
 è scritto per questo, e tu devi restare disponibile per gli altri diciannove.
-Il T0 ha la sua in [`guide/merge.md`](../../workshop-2-team/workshop/guide/merge.md).
+Per i merge, i tre casi con i comandi sono in [`02-si-allinea.md`](../doc-studenti/02-si-allinea.md).
 
 *«Ho finito il mio ticket, cosa faccio?»*
 Vai dal T0. Quasi sempre la risposta è: fai la review della PR di un altro. Mai:

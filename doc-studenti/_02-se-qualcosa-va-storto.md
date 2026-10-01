@@ -1,5 +1,5 @@
 > **Da aprire quando serve.**
-> [← indice](README.md)
+> [← indice](_README.md)
 
 # Se qualcosa va storto
 
@@ -18,7 +18,7 @@ Non ha un posto nella sequenza: si apre quando serve.
 | **«`npm run check` non passa»** | non committare. Se non capisci l'errore, incollalo a Claude: è più veloce di te |
 | **«Ho aperto una seconda PR e mostra cose già fatte»** | il secondo branch è partito da un `main` che non conteneva ancora il tuo lavoro. Chiudi la seconda PR e continua sulla prima: finché non è mergiata, è lì che vanno i commit |
 | **«`git push` rifiutato: `src refspec main does not match any`»** | il branch si chiama `master`: hai fatto `git init` senza `-b main`. `git branch -M main` e ripeti il push |
-| **«Nel `git log` mi manca un commit»** | `git status -sb`: *ahead* = hai committato ma non pushato, *behind* = non hai fatto `git pull`. I tre casi con i comandi stanno in [`percorso/02-si-allinea.md`](percorso/02-si-allinea.md) |
+| **«Nel `git log` mi manca un commit»** | `git status -sb`: *ahead* = hai committato ma non pushato, *behind* = non hai fatto `git pull`. I tre casi con i comandi stanno in [`02-si-allinea.md`](02-si-allinea.md) |
 | **«Ho fatto un casino con git»** | fermati prima di peggiorare e chiedi. Dieci minuti persi in tre valgono meno di un `reset --hard` sbagliato |
 | **«Non finiamo in tempo»** | normale. Tagliate gli stretch goal, non i criteri di demo: meglio due track finiti e uno a metà che tre a metà |
 

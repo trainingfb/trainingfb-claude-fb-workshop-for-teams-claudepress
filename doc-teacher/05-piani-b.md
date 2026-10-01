@@ -1,4 +1,4 @@
-> **Solo facilitatore** · [indice](../README.md) · ← [03 · Guida](03-guida.md) · [01 · Fogli](06-fogli-da-stampare.md) →
+> **Solo facilitatore** · [indice](../README.md) · ← [03 · Guida](03-guida.md) · [06 · Fogli](06-fogli-da-stampare.md) →
 
 # Piani B
 

@@ -84,7 +84,7 @@ Riscrivi @idea.md tenendo queste scelte e togliendo il resto.
 Resta corto: è ancora un'idea, non una specifica.
 ```
 
-Due cose da notare nel risultato, che oggi vive nella prima sezione di [`01-prima-di-venire.md`](../partecipanti/01-prima-di-venire.md):
+Due cose da notare nel risultato, che oggi vive nella prima sezione di [`_01-prima-di-venire.md`](../../doc-studenti/_01-prima-di-venire.md):
 
 - è comparsa una sezione **«Cosa non c'è»**. È la più utile del documento: è quella che al minuto 70 impedisce a qualcuno di mettersi a fare la ricerca.
 - è comparsa **una frase sola che descrive la demo**. Se un lavoro non serve a quella frase, oggi non si fa.

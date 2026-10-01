@@ -1,4 +1,4 @@
-> **Solo facilitatore** · [indice](../README.md) · ← [00 · Preparazione](00-preparazione.md) · [02 · Runbook](02-runbook.md) →
+> **Solo facilitatore** · [indice](../README.md) · [02 · Runbook](02-runbook.md) →
 
 # Messaggi pronti
 

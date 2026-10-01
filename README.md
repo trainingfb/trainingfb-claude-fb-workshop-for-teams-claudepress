@@ -4,11 +4,20 @@ Il progetto su cui si lavora è in [`repo-claudepress/`](repo-claudepress/): i t
 
 | | |
 |---|---|
-| [`partecipanti/`](partecipanti/) | quello che dai a loro: dal setup a casa fino alla demo |
-| [`docente/`](docente/) | quello che racconti tu: come è nato il progetto e perché la giornata è fatta così |
+| [`doc-studenti/`](doc-studenti/_README.md) | quello che dai a loro: dal setup a casa fino alla demo |
+| [`doc-teacher/`](doc-teacher/) | quello che usi tu: messaggi, runbook, guida, piani B, fogli da stampare, appunti |
 
 ## Da dove si comincia
 
-**Chi insegna:** [`docente/README.md`](docente/README.md).
+**I partecipanti:** [`doc-studenti/_README.md`](doc-studenti/_README.md), e a casa [`_01-prima-di-venire.md`](doc-studenti/_01-prima-di-venire.md).
 
-**I partecipanti:** [`partecipanti/README.md`](partecipanti/README.md), e a casa il primo file.
+**Chi insegna:**
+
+| | |
+|---|---|
+| [`01-messaggi.md`](doc-teacher/01-messaggi.md) | i messaggi da mandare prima e dopo |
+| [`02-runbook.md`](doc-teacher/02-runbook.md) | la timeline della giornata |
+| [`03-guida.md`](doc-teacher/03-guida.md) | cosa dire, momento per momento |
+| [`05-piani-b.md`](doc-teacher/05-piani-b.md) | cosa fare quando qualcosa va storto |
+| [`06-fogli-da-stampare.md`](doc-teacher/06-fogli-da-stampare.md) | i fogli per i tavoli, e cosa portare |
+| [`appunti-docente/`](doc-teacher/appunti-docente/README.md) | come è nato il progetto, con le slide |
