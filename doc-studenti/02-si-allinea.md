@@ -1,4 +1,5 @@
-DURATA: 10-20 MINUTI
+> **Passo 2 · 10-20 minuti · insieme**
+> ← 01 · Fondamenta: [T1](01-T1-fondamenta.md) · [T2](01-T2-fondamenta.md) · [T3](01-T3-fondamenta.md) · [indice](README.md) · prossimo → 03 · [T1 Sito](03-T1-sito.md) · [T2 Elenco](03-T2-cms-elenco.md) · [T3 Form](03-T3-cms-form.md)
 
 > **Stop. Si ritorna tutti e tre allo stesso tavolo, e poi ci si divide per davvero.**
 

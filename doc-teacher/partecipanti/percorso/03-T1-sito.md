@@ -1,6 +1,7 @@
-> **Da qui lavori da solo. Leggi solo questo file: gli altri due sono di altre persone.**
+> **Passo 3 · T1 · 15-20 minuti · da solo**
+> ← [02 · Ci si allinea](02-si-allinea.md) · [indice](../README.md) · prossimo → [04 · Si chiude](04-si-chiude.md)
 
-DURATA: 15-20 MINUTI
+> **Da qui lavori da solo. Leggi solo questo file: gli altri due sono di altre persone.**
 
 # T1 · Il sito
 

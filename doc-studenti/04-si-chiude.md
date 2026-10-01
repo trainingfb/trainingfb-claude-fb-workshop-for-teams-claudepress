@@ -1,3 +1,6 @@
+> **Passo 4 · 25-30 minuti · insieme, un portatile solo**
+> ← 03 · [T1 Sito](03-T1-sito.md) · [T2 Elenco](03-T2-cms-elenco.md) · [T3 Form](03-T3-cms-form.md) · [indice](README.md)
+
 > **Di nuovo tutti e tre insieme, su un portatile solo, sullo schermo grande.**
 
 # Si chiude — insieme

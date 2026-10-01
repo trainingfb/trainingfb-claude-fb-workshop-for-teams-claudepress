@@ -1,4 +1,5 @@
-DURATA: 15-20 minuti
+> **Passo 0 · 15-20 minuti · insieme, un portatile solo**
+> [indice](../README.md) · prossimo → 01 · Fondamenta: [T1](01-T1-fondamenta.md) · [T2](01-T2-fondamenta.md) · [T3](01-T3-fondamenta.md)
 
 > **Tutti e tre allo stesso tavolo, ma alla tastiera uno solo.** Questo file si fa su un portatile solo: si clona in tre soltanto all'ultimo passo.
 

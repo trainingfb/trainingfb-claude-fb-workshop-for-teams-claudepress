@@ -1,4 +1,5 @@
-DURATA: 10-20 MINUTI
+> **Passo 1 · T2 · 10-20 minuti · allo stesso tavolo**
+> ← [00 · Si parte](00-si-parte.md) · [indice](../README.md) · prossimo → [02 · Ci si allinea](02-si-allinea.md)
 
 > **Ognuno sul suo portatile, ma restate allo stesso tavolo: è ancora lavoro di squadra.**
 
