@@ -63,6 +63,8 @@ Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git p
 
 **Cosa stai per fare:** scriverti una skill tua.
 
+> **Qui scrivi solo la skill, non il form.** `Input` e `Button` ancora non li hai, e non ti servono: la skill li nomina e basta. Il form lo scrivi in [`03-T3-cms-form.md`](03-T3-cms-form.md), quando ti saranno arrivati con il `git pull`.
+
 Una skill è una procedura scritta in un file: la scrivi una volta, e da lì in poi la lanci con un comando invece di rispiegare a Claude come si fa. `/new-component`, che hai appena usato, è esattamente questo — l'ha scritta qualcun altro per te.
 
 La tua si chiama **`/new-form`** e ti serve a scrivere il form del backoffice: il pezzo più lungo della giornata, con dentro la validazione, gli errori sotto ai campi giusti, il bottone che si disabilita durante l'invio.
@@ -84,9 +86,9 @@ Leggi @.claude/skills/new-component/SKILL.md: è l'esempio della forma che vogli
 
 Scrivi .claude/skills/new-form/SKILL.md. La skill deve produrre un form che:
 - è "use client", con una riga di commento che dice perché
-- usa SEMPRE Field e Input, importati da @/components/ui/Field e
-  @/components/ui/Input: nessun <input> o <textarea> scritto a mano, altrimenti
-  resta fuori dall'identità visiva del progetto
+- usa SEMPRE Field, Input e Button, importati da @/components/ui/Field,
+  @/components/ui/Input e @/components/ui/Button: nessun <input>, <textarea> o
+  <button> scritto a mano, altrimenti resta fuori dall'identità visiva del progetto
 - valida con postInputSchema di @src/contracts/blog.ts, mai con controlli scritti a mano
 - mostra ogni errore dentro il Field del campo giusto, mai in cima alla pagina
 - dopo la risposta del server, se è un ApiError con code "validation_error",
