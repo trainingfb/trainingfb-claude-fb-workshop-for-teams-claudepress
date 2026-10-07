@@ -61,9 +61,9 @@ Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git p
 
 ## Passo 2 · Il tuo strumento — la skill `/new-form`
 
-**Cosa stai per fare:** scriverti una skill tua.
+**Cosa stai per fare:** scrivere una skill tua.
 
-> **Qui scrivi solo la skill, non il form.** `Input` e `Button` ancora non li hai, e non ti servono: la skill li nomina e basta. Il form lo scrivi in [`03-T3-cms-form.md`](03-T3-cms-form.md), quando ti saranno arrivati con il `git pull`.
+> **Qui scrivi solo la skill, non il form.** `Input` e `Button` ancora non li hai, e non ti servono: la skill li nomina e basta. Il form lo scrivi in [`03-T3-cms-form.md`](03-T3-cms-form.md), quando ti saranno arrivati gli altri componenti con il `git pull`.
 
 Una skill è una procedura scritta in un file: la scrivi una volta, e da lì in poi la lanci con un comando invece di rispiegare a Claude come si fa. `/new-component`, che hai appena usato, è esattamente questo — l'ha scritta qualcun altro per te.
 
@@ -90,9 +90,8 @@ Scrivi .claude/skills/new-form/SKILL.md. La skill deve produrre un form che:
   @/components/ui/Input e @/components/ui/Button: nessun <input>, <textarea> o
   <button> scritto a mano, altrimenti resta fuori dall'identità visiva del progetto
 - valida con postInputSchema di @src/contracts/blog.ts, mai con controlli scritti a mano
-- mostra ogni errore dentro il Field del campo giusto, mai in cima alla pagina
-- dopo la risposta del server, se è un ApiError con code "validation_error",
-  legge error.fields e mette quei messaggi negli stessi Field
+- mostra ogni errore sotto il suo campo, passandolo al prop error del Field che lo avvolge: mai un riquadro di errori in cima alla pagina
+- dopo la risposta del server, se è un ApiError con code "validation_error", legge error.fields e mette quei messaggi negli stessi Field
 - disabilita il bottone durante l'invio: niente doppio invio
 - funziona sia in creazione (POST) sia in modifica (PATCH), con valori iniziali opzionali
 

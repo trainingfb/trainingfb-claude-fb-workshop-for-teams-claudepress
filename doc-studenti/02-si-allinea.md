@@ -7,13 +7,7 @@
 
 Tre passi: prendete il lavoro degli altri due, date un'identità visiva ai sei componenti, e controllate che non manchi niente a nessuno.
 
-| | Chi | Cosa |
-|---|---|---|
-| **1** | tutti e tre | il `git pull` con dentro il lavoro degli altri |
-| **2** | uno solo | la vetrina dei sei componenti, e la skill di design |
-| **3** | tutti e tre | il controllo che siate allineati |
-
-**Si comincia quando hanno pushato tutti e tre**, componenti e strumento. Se qualcuno è indietro, aspettatelo: da qui in poi si va avanti insieme.
+**Si comincia quando hanno pushato tutti e tre**, component, skills e agenti. Se qualcuno è indietro, aspettatelo: da qui in poi si va avanti insieme.
 
 ---
 
@@ -30,7 +24,7 @@ Adesso in `src/components/ui/` ci sono **tutti e sei** i componenti, non solo i 
 
 **Verifica**
 
-- [ ] i sei file esistono in `src/components/ui/` su tutti e tre i portatili
+- [ ] in `src/components/ui/` ci sono tutti e sei: `PostCard`, `EmptyState`, `Input` (T1), `StatusBadge`, `Button` (T2), `Field` (T3), su tutti e tre i portatili
 - [ ] `npm run check` passa
 - [ ] nessuno ha toccato `src/contracts/`
 
