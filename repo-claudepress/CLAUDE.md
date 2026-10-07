@@ -72,7 +72,7 @@ stai lavorando: se ti serve un file di un'altra, fermati e segnalalo.
 
 | Area | Responsabile | File |
 |---|---|---|
-| Condivisa | tutti | `src/contracts/**` · `src/components/ui/**` · `src/app/layout.tsx` · `src/app/globals.css` · `CLAUDE.md` |
+| Condivisa | tutti | `src/contracts/**` · `src/components/ui/**` · `src/app/vetrina/**` · `src/app/layout.tsx` · `src/app/globals.css` · `CLAUDE.md` |
 | Sito pubblico | **TODO** | `src/app/page.tsx` · `src/app/posts/**` · nuove rotte pubbliche (`src/app/<nuova>/**`) |
 | Backoffice, elenco | **TODO** | `src/app/admin/page.tsx` · `src/app/admin/posts/page.tsx` · `src/app/admin/posts/_list/**` |
 | Backoffice, editor | **TODO** | `src/app/admin/posts/new/**` · `src/app/admin/posts/[id]/**` · `src/app/admin/_components/**` |
