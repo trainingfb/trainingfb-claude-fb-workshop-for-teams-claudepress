@@ -1,15 +1,14 @@
 > **Passo 0 · 15-20 minuti · insieme, un portatile solo**
 > [indice](README.md) · prossimo → 01 · Fondamenta: [T1](01-T1-fondamenta.md) · [T2](01-T2-fondamenta.md) · [T3](01-T3-fondamenta.md)
 
-> **Tutti e tre allo stesso tavolo, ma alla tastiera uno solo.** Questo file si fa su un portatile solo: si clona in tre soltanto all'ultimo passo.
+> **Tutti e tre allo stesso tavolo, ma alla tastiera uno solo.** Questa sezione si fa su un portatile solo.
 
 # Si parte — chi siamo e cosa abbiamo deciso
 
-Sei passi per mettervi d'accordo: il repo del team, chi fa cosa, il contratto, le tre decisioni che valgono per tutti. Poi ognuno si porta a casa il progetto già deciso.
 
-**Qui non si scrive ancora codice.** Si scrive nei file dopo, uno per ruolo, e ci arrivate quando queste sei caselle sono spuntate.
+**Qui non si scrive ancora codice.** 
 
-> **Scegliete chi guida.** Uno dei tre apre il suo portatile, e da qui al Passo 5 si lavora solo su quello: gli altri due guardano lo schermo e dicono la loro. Non conta chi sia — conta che sia **uno solo**, o vi ritrovate un conflitto su `main` prima ancora di aver scritto una riga di codice.
+> **Scegliete chi guida.** Uno dei tre apre il suo portatile, e per ora si lavora solo su quello: gli altri due guardano lo schermo e dicono la loro. Non conta chi sia — conta che sia **uno solo**, o vi ritrovate un conflitto su `main` prima ancora di aver scritto una riga di codice.
 
 ---
 
@@ -17,7 +16,8 @@ Sei passi per mettervi d'accordo: il repo del team, chi fa cosa, il contratto, l
 
 **Lo fa chi guida.** Le altre due persone guardano.
 
-Si scarica solo il progetto, senza la documentazione del workshop, in una **cartella nuova** (non in quella clonata a casa):
+Si scarica un progetto che ho già preparato per questo workshop.
+E' un semplice progetto NextJS per la pubblicazione di articoli. Le route già ci sono ma tutto è ancora da fare.
 
 ```bash
 npx degit trainingfb/trainingfb-claude-fb-workshop-for-teams-claudepress/repo-claudepress claudepress
@@ -28,9 +28,7 @@ cd claudepress
 
 Adesso ne fai un repo, e lo pubblichi sul tuo profilo GitHub:
 
-> Al posto di `<NUMERO-TAVOLO>` metti il numero scritto sul foglietto del vostro tavolo, senza `< >`: per esempio `claudepress-team-3`.
-
-> IMPORTANTE: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
+> IMPORTANTE #1: Al posto di `<NUMERO-TAVOLO>` metti il numero scritto sul foglietto del vostro tavolo, senza `< >`: per esempio `claudepress-team-3`.
 
 
 ```bash
@@ -38,7 +36,12 @@ git init -b main
 git add .
 git commit -m "chore: start from claudepress scaffold"
 gh repo create claudepress-team-<NUMERO-TAVOLO> --public --source=. --remote=origin --push
+# example:
+gh repo create claudepress-team-2 --public --source=. --remote=origin --push
+
 ```
+
+> TIP: `-b main` serve perché su alcuni computer git chiama il primo branch `master`, e al Passo 5 si pusha su `main`.
 
 
 Poi, sempre chi guida, su GitHub: **Settings → Collaborators**, e aggiungi gli altri due.
@@ -57,6 +60,7 @@ Poi, sempre chi guida, su GitHub: **Settings → Collaborators**, e aggiungi gli
 
 ```bash
 npm install
+# attendi l'installazione delle dipendenze
 npm run dev
 ```
 
@@ -81,7 +85,7 @@ npm run check
 
 ## Passo 3 · Scegliete i tre ruoli
 
-**A voce, tutti e tre.** Nessuno tocca la tastiera: servono solo i nomi, da scrivere nel `CLAUDE.md` al Passo 5.
+**A voce, tutti e tre.** Nessuno tocca la tastiera: servono solo i nomi, da scrivere successivamete nel `CLAUDE.md`.
 
 Ci sono tre track, di peso simile, e **nessuno dipende dagli altri due**.
 
@@ -99,15 +103,19 @@ Come sceglierli, in due minuti e non in dieci:
 
 Il ruolo non c'entra con chi guida adesso: chi ha creato il repo può essere T1, T2 o T3.
 
+> Scrivetevi i ruoli in un foglietto, ad es.: T1: Mario Rossi, T2: Giulia Bianchi, T3: Luca Verdi.
+
+
 **Verifica**
 
 - [ ] ognuno sa se è T1, T2 o T3
+- [ ] avete scritto i ruoli in foglietto. 
 
 ---
 
 ## Passo 4 · Guardate il contratto, insieme
 
-Da qui in avanti tenete il progetto **aperto nell'editor** — VS Code, Cursor, WebStorm, quello che usate. Dalla cartella `claudepress` potete ad esempio aprire l'editor con
+Da qui in avanti tenete il progetto **aperto nell'editor**: VS Code, Cursor, WebStorm, quello che usate. Dalla cartella `claudepress` potete ad esempio aprire l'editor con:
 
 ```bash
 code .    #  visual studio code
@@ -118,7 +126,7 @@ agy-ide .  # antigravity
 Serve per due cose: l'albero dei file a sinistra, per vedere cosa c'è e cosa cambia (fra poco toccate il `CLAUDE.md`), e il **terminale integrato** (*Terminal → New Terminal*), da cui lanciate `claude` senza saltare da una finestra all'altra.
 
 > Il `npm run dev` del Passo 2 lasciatelo dov'è, gira per conto suo tutto il giorno.
-Oppure killate il processo (CTRL/CMD + C) e avviatelo in un terminale del vostro IDE.
+Oppure killate il processo (CTRL/CMD + C) e avviatelo in un terminale del vostro IDE se vi è più comodo. A voi la scelta.
 
 Poi, in un altro terminale dell'editor avviate Claude:
 
@@ -136,6 +144,8 @@ Non scrivere codice.
 
 È l'unico file che importate tutti e tre. **Adesso si può discutere**, finché siete seduti insieme. Fra mezz'ora no.
 
+> questo contratto è stato creato da Claude Code nel momento in cui ho ideato questo workshop. Gli ho chiesto semplicemente di progettare un workshop per 3 persone in cui si visualizzano dei post in un sito pubblico, ed è necessario anche un CMS (admin) per gestirli.
+
 **Verifica**
 
 - [ ] sapete che esistono `Post`, `postInputSchema`, `ApiError`, `API_ROUTES`, `ROUTES` e i `…Props`
@@ -148,47 +158,72 @@ Stesso portatile, stessa sessione `claude` del passo prima. Si decide in tre, sc
 
 ### a. Decidete, a voce — 3 minuti
 
-Tre cose sono rimaste aperte apposta:
+Alcune cose sono rimaste aperte apposta in `Decisioni di progetto`:
 
-1. `content` è **testo semplice** o **markdown**?
-2. In `/admin/posts` l'ordinamento è per **data di modifica** o per **titolo**?
-3. Cancellare un post **chiede conferma** o no?
+1. stabilire il formato dei post: `content` è **testo semplice** o **markdown**? Scegliamo "testo semplice"
+2. In `/admin/posts` l'ordinamento è per **data di modifica** o per **titolo**? Scegliamo "titolo"
+3. Cancellare un post **chiede conferma** o no? Scegliamo di No per il momento. Siete sempre in tempo a farlo successivamente
 
-Non sono decisioni grosse: tre minuti, non dieci. Quello che decidete vale per tutti e tre da adesso in poi.
+Quello che decidete vale per tutti e tre da adesso in poi.
 
 ### b. Scrivetele nel `CLAUDE.md`
 
 **È lì che vanno**, non su un foglio e non nella chat: è il file che Claude legge a ogni messaggio, quindi una decisione scritta lì la rispetta da sola.
 
-Il file è già nel repo, ed è un `CLAUDE.md` normale di progetto. Ha dentro quattro **`TODO`**: sono i punti in cui deve intervenire il team. Cercateli — tre si risolvono adesso, uno alla fine della giornata.
+Il file è già nel repo, ed è un `CLAUDE.md` normale di progetto. Ha dentro quattro **`TODO`**: sono i punti in cui deve intervenire il team. Apritelo nell'editor e cercateli: tre si compilano adesso, uno alla fine della giornata.
 
-**Soluzione - Prompt:**
+Lo fate fare a Claude, nella sessione già aperta. Il prompt qui sotto è già completo: **cambiate solo i tre nomi** (Mario Rossi, Giulia Bianchi, Luca Verdi) con quelli del foglietto del Passo 3, nello stesso ordine: T1, T2, T3. Tutto il resto lasciatelo com'è.
+
+**Prompt:**
 
 ```
 Apri @CLAUDE.md.
 
 Nella sezione "Decisioni di progetto" sostituisci i tre "da decidere" con:
-- content: testo
+- content: testo semplice
 - ordinamento in /admin/posts: titolo
 - conferma prima di cancellare: no
 
-Nella sezione "Skill di design" scrivi il nome della skill che useremo:
-
+Nella sezione "Skill di design" sostituisci "da compilare" con:
 frontend-design
 
 Nella tabella "Aree di proprietà" sostituisci i TODO della colonna
 Responsabile con questi nomi:
-- Sito pubblico: <NOME UTENTE 1> 
-- Backoffice, elenco: <NOME UTENTE 2> 
-- Backoffice, editor: <NOME UTENTE 3> 
+- Sito pubblico: Mario Rossi
+- Backoffice, elenco: Giulia Bianchi
+- Backoffice, editor: Luca Verdi
 
 Togli i commenti TODO delle tre sezioni che hai compilato. Lascia quello
 di "Regole aggiunte dal team" e non toccare il resto del file.
 ```
 
-Le tre righe fra `< >` sono le vostre decisioni: mettete quelle, non l'esempio.
+Alla fine, nel `CLAUDE.md` le tre sezioni devono essere così (con i vostri nomi):
 
-> **Il quarto `TODO`, quello delle «Regole aggiunte dal team», non si tocca adesso.** Si risolve alla fine della giornata: una regola scritta prima di sbagliare è un'opinione.
+```markdown
+## Aree di proprietà
+
+| Area | Responsabile | File |
+|---|---|---|
+| Condivisa | tutti | … |
+| Sito pubblico | Mario Rossi | … |
+| Backoffice, elenco | Giulia Bianchi | … |
+| Backoffice, editor | Luca Verdi | … |
+| Piattaforma | nessuno: non si tocca | … |
+
+## Decisioni di progetto
+
+- **formato di `content`**: testo semplice
+- **ordinamento in `/admin/posts`**: titolo
+- **conferma prima di cancellare**: no
+
+## Skill di design
+
+- **nome**: frontend-design
+```
+
+Apritelo nell'editor e confrontatelo. Se qualcosa non torna, correggetelo a mano.
+
+> **Il quarto `TODO`, quello delle «Regole aggiunte dal team», non si tocca adesso.** Si risolve alla fine della giornata.
 
 ### c. Committate e pushate
 
@@ -205,6 +240,7 @@ git push origin main
 
 - [ ] le tre decisioni sono nel `CLAUDE.md`, al posto dei «da decidere»
 - [ ] la colonna «Responsabile» ha tre nomi al posto dei `TODO`
+- [ ] in «Skill di design» c'è `frontend-design`
 - [ ] il `TODO` delle «Regole aggiunte dal team» è ancora lì
 - [ ] su GitHub, nella pagina del repo del team, il `CLAUDE.md` è quello aggiornato
 
@@ -238,11 +274,11 @@ Poi aprite anche voi il progetto nell'editor (`code .` dalla cartella `claudepre
 - [ ] `git status` è pulito su tutti e tre
 - [ ] aprite il `CLAUDE.md`: le tre decisioni e i tre nomi ci sono
 
-> Se su un portatile non parte, fermatevi qui e sistematelo. Andare avanti in due e recuperare dopo non funziona mai.
+> Se su un portatile non parte, fermatevi qui e sistematelo. 
 
 ---
 
-## Come siete messi adesso
+## 3 Terminali...
 
 Da qui in avanti ognuno lavora con **tre terminali aperti**, tutti nella cartella `claudepress` e tutti dentro l'editor:
 

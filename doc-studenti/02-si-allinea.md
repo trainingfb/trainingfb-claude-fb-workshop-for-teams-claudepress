@@ -10,7 +10,7 @@ Tre passi: prendete il lavoro degli altri due, date un'identità visiva ai sei c
 | | Chi | Cosa |
 |---|---|---|
 | **1** | tutti e tre | il `git pull` con dentro il lavoro degli altri |
-| **2** | uno solo | la skill di design sui sei componenti |
+| **2** | uno solo | la vetrina dei sei componenti, e la skill di design |
 | **3** | tutti e tre | il controllo che siate allineati |
 
 **Si comincia quando hanno pushato tutti e tre**, componenti e strumento. Se qualcuno è indietro, aspettatelo: da qui in poi si va avanti insieme.
@@ -44,7 +44,44 @@ Qui usate una skill che **non avete scritto voi**: è un mestiere che non è il 
 
 > Tre frontender, due ore, nessun designer. Il risultato funziona ed è brutto. Non perché siete scarsi: il gusto visivo non è una procedura che ripetete, è un mestiere.
 
-### a. Installatela — **una persona sola**
+### a. La vetrina: guardate i componenti prima dello stile
+
+Finora i sei componenti non li ha visti nessuno: nessuna pagina li usa ancora, e sul sito ci sono solo i segnaposto. Prima di dargli uno stile, fateveli mostrare tutti in una pagina sola: così fra cinque minuti vedete anche **cosa cambia**, non solo il diff.
+
+**Prompt:**
+
+```
+Crea src/app/vetrina/page.tsx: una pagina di prova che mostra i sei
+componenti di src/components/ui/, uno sotto l'altro, ognuno con un
+titoletto con il suo nome.
+- È un client component ("use client", con il commento che dice perché):
+  Input vuole onChange e Button onClick, che una pagina server non può passare.
+- Dati finti scritti nella pagina, nessuna fetch.
+- PostCard: due card con dati inventati.
+- StatusBadge: uno published e uno draft.
+- Button: le tre varianti, più uno disabled.
+- Field con dentro Input: uno normale, uno multiline, uno con errore.
+- EmptyState: con e senza description.
+Usa i componenti così come sono, con i props del contratto. Non modificarli.
+```
+
+Aprite <http://localhost:3000/vetrina>, e guardatela bene: è il **prima**.
+
+> La vetrina è nell'area **condivisa** del `CLAUDE.md`, come i componenti: resta nel progetto fino alla demo, e da qui in poi si congela con loro.
+
+**Committatela subito**, da sola:
+
+```bash
+npm run check
+git add src/app/vetrina/
+git commit -m "chore: add UI showcase page"
+git pull --rebase
+git push origin main
+```
+
+Va committata adesso, prima di installare la skill: al punto d controllerete che la skill abbia toccato solo i componenti, e una vetrina non committata sarebbe una riga in più da spiegare.
+
+### b. Installatela — **una persona sola**
 
 Dalla radice del progetto, cioè dentro `claudepress/` (nel terminale, non dentro Claude Code):
 
@@ -83,7 +120,7 @@ git push origin main
 
 Due commit separati e non uno solo, per un motivo pratico: fra due minuti dovrete leggere il diff di quello che la skill ha cambiato. Se l'installazione è già committata, in quel diff restano **solo** i vostri componenti — altrimenti ci trovate dentro anche `.agents/`, il symlink e `skills-lock.json`, e il controllo diventa illeggibile.
 
-### b. Lanciatela — la stessa persona, su tutti e sei i componenti
+### c. Lanciatela — la stessa persona, su tutti e sei i componenti
 
 
 
@@ -107,7 +144,7 @@ Non cambiare i nomi dei props: sono definiti nel contratto.
 Non toccare nessun altro file.
 ```
 
-### c. Guardate il diff in tre
+### d. Guardate il diff in tre
 
 Una skill esterna è brava e **non conosce il vostro contratto**: può rinominare props, spostare file, riscrivere cose che non sono sue. Questo è l'unico momento della giornata in cui vale la pena leggere un diff riga per riga — e visto che avete committato i componenti prima, avete un punto a cui tornare.
 
@@ -117,7 +154,7 @@ Una skill esterna è brava e **non conosce il vostro contratto**: può rinominar
 git status --short
 ```
 
-Vi aspettate solo roba dentro `src/components/ui/`, `src/app/layout.tsx` e `src/app/globals.css` — i file dell'installazione non ci sono più, li avete committati al punto a. **Qualsiasi altra riga è un problema**, e si risolve al punto 4.
+Vi aspettate solo roba dentro `src/components/ui/`, `src/app/layout.tsx` e `src/app/globals.css` — la vetrina e i file dell'installazione non ci sono più, li avete committati ai punti a e b. **Qualsiasi altra riga è un problema**, e si risolve al punto 4.
 
 **2. Quanto ha cambiato**
 
@@ -170,6 +207,10 @@ npm run check
 
 Questo è il vostro paracadute: i componenti sono tipizzati con i `…Props` del contratto, quindi **se ha rinominato un prop il typecheck esplode qui**. Se `check` passa e il diff è pulito, avete finito.
 
+**6. Ricaricate la vetrina**
+
+Riaprite <http://localhost:3000/vetrina>: è lo stesso codice di prima, con l'identità visiva nuova. Questo è il **dopo**. Se un componente è rotto o illeggibile lo vedete qui, adesso, e non fra un'ora dentro una pagina vera.
+
 ### Poi committa — sempre la stessa persona
 
 ```bash
@@ -186,6 +227,7 @@ E gli altri due: `git pull`.
 - [ ] il diff tocca solo `src/components/ui/`, `src/app/layout.tsx` e `src/app/globals.css`
 - [ ] i props sono ancora quelli di `blog.ts`
 - [ ] `npm run check` passa
+- [ ] `/vetrina` mostra i sei componenti, con lo stile nuovo
 
 ---
 
@@ -200,7 +242,7 @@ npm run check       # deve passare
 git log --oneline -10
 ```
 
-Nel log dovete vedere gli stessi commit su tutti e tre i portatili: il `CLAUDE.md`, i tre commit dei componenti, i tre degli strumenti, l'installazione della skill di design e lo stile. Otto in tutto.
+Nel log dovete vedere gli stessi commit su tutti e tre i portatili: il `CLAUDE.md`, i tre commit dei componenti, i tre degli strumenti, la vetrina, l'installazione della skill di design e lo stile. Nove in tutto.
 
 Poi **riavviate Claude Code**, tutti e tre: le skill e il subagent degli altri sono arrivati con il `git pull`, e una sessione aperta prima non li vede.
 

@@ -5,16 +5,6 @@
 
 # T3 · Le fondamenta
 
-Due cose, in quest'ordine: **il tuo componente**, poi **il tuo strumento**, la skill `/new-form`, che è la più lunga dei tre. Quando li hai pushati tutti e due, ci si rivede in [`02-si-allinea.md`](02-si-allinea.md).
-
-> **Intanto:** T1 scrive `PostCard`, `EmptyState` e `Input` più la skill `/new-page`, T2 scrive `StatusBadge` e `Button` più il subagent `smoke-test`. Nessuno dei due tocca i tuoi file.
-
-Obiettivo della mattina: **quando comincerete a lavorare da soli, non dovrà mancare niente a nessuno.**
-
-> Se sei in ritardo, sfora sul componente: un componente brutto si sistema dopo, uno strumento che non hai scritto non lo userai mai.
-
----
-
 ## Passo 1 · Il tuo componente
 
 | Componente | Chi lo userà |
@@ -55,6 +45,8 @@ git commit -m "feat: shared UI components"
 git pull --rebase
 git push origin main
 ```
+
+> `git pull --rebase` scarica quello che hanno pushato gli altri e rimette il tuo commit in cima: la storia resta lineare, senza commit «Merge branch…».
 
 Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git pull --rebase` e ripusha: state toccando file diversi, quindi non ci sono conflitti veri.
 
@@ -131,3 +123,10 @@ Non serve al momento avviare questa skill. La userei dopo. Comunque verifica i s
 - [ ] la tua skill è su `main`
 
 Appena hanno pushato anche gli altri due, tutti e tre insieme: [`02-si-allinea.md`](02-si-allinea.md).
+
+
+---
+
+# AIUTA I TUOI COLLEGHI
+
+Se hai finito prima degli altri, dai una mano ai tuoi colleghi

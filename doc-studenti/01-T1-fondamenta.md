@@ -1,23 +1,18 @@
 > **Passo 1 · T1 · 10-20 minuti · allo stesso tavolo**
 > ← [00 · Si parte](00-si-parte.md) · [indice](README.md) · prossimo → [02 · Ci si allinea](02-si-allinea.md)
 
-> **Ognuno sul suo portatile, ma restate allo stesso tavolo: è ancora lavoro di squadra.**
+> **Ognuno lavora sul suo portatile, ma restate allo stesso tavolo: è ancora lavoro di squadra.**
 
-# T1 · Le fondamenta
+# T1 · Il sito Web pubblico
 
-Due cose, in quest'ordine: **i tuoi tre componenti**, poi **il tuo strumento**, la skill `/new-page`. Quando li hai pushati tutti e due, ci si rivede in [`02-si-allinea.md`](02-si-allinea.md).
-
-> **Intanto:** T2 scrive `StatusBadge` e `Button` più il subagent `smoke-test`, T3 scrive `Field` più la skill `/new-form`. Nessuno dei due tocca i tuoi file.
-
-Obiettivo: **quando comincerete a lavorare da soli, non dovrà mancare niente a nessuno.**
-
-> Se sei in ritardo, sfora sui componenti: un componente brutto si sistema dopo, uno strumento che non hai scritto non lo userai mai.
+Questa sezione dovrà essere svolta solo responsabile T1. 
+T2 e T3 devono invece svolgere le successive due lezioni. Una ciascuno.
 
 ---
 
 ## Passo 1 · I tuoi componenti
 
-Sono tre, uno in più degli altri: T3 ne ha uno solo perché scrive la skill più lunga dei tre.
+Dovrai creare 3 componenti:
 
 | Componente | Chi lo userà |
 |---|---|
@@ -27,21 +22,20 @@ Sono tre, uno in più degli altri: T3 ne ha uno solo perché scrive la skill pi�
 
 Guarda la terza riga: **`Input` lo scrivi tu, e non lo userai mai.** È la dimostrazione più pulita del perché esiste il contratto — scrivi contro una firma per qualcun altro, e al merge si incastra.
 
-`Input` sta qui e non dentro il form di T3 per un motivo pratico: **la skill di design che lanciate all'allineamento passa solo su `src/components/ui/`.** Se i campi di testo stessero nel form, sarebbero l'unica cosa dell'applicazione a restare grezza — proprio nella schermata da cui parte la demo.
+Nel repo ci sono già tre skill pronte: **`/new-component`**, con le indicazioni per creare nuovi componenti, più **`/commit`** e **`/pr`** che userete tutto il giorno. Aprile adesso e dagli un'occhiata. Le trovi nella cartella `.claude`.
 
-Nel repo ci sono già tre skill pronte: **`/new-component`**, che fa esattamente questo, più **`/commit`** e **`/pr`** che userete tutto il giorno. Aprile adesso, sono tre minuti — `/new-component` ti serve anche come modello al passo 2.
+**Soluzione / Prompt** 
 
-**Soluzione / Prompt** — comincia dal primo:
-
+Creiamo il primo componente. Apri Clauce code e digita:
 ```
 /new-component PostCard
 ```
 
 La skill va a leggere `PostCardProps` nel contratto, scrive il file, e lancia `npm run check` da sola. Se ti dice che una firma non esiste, **non inventarla**: il contratto è quello.
 
-Le due regole: **le firme sono quelle del contratto**, e i componenti **ricevono props e rendono markup** — niente fetch, niente logica di dominio.
+Le due regole: **le firme sono quelle del contratto**, e i componenti **ricevono props e renderizzano markup** — niente fetch, niente logica di dominio.
 
-Apri il file che è uscito e guardalo: è la forma che devono avere anche gli altri due.
+Apri il file (in `src/app/componnets/ui`) che è stato crfaeto: è la forma che devono avere anche gli altri due.
 
 Adesso **fai la stessa cosa per gli altri due**, uno alla volta — è la stessa skill, cambia solo il nome.
 
@@ -53,12 +47,10 @@ Adesso **fai la stessa cosa per gli altri due**, uno alla volta — è la stessa
 
 ```
 /new-component Input
+# IMPORTANTE: conferma l'utilizzo di 'use client' se viene chiesto da Claude
 ```
 
-> IMPORTANTE: conferma l'utilizzo di 'use client' se richiesto
-
-
-Le loro firme sono `EmptyStateProps` e `InputProps`, nello stesso contratto. Se una delle due non ti torna, rileggi `src/contracts/blog.ts` invece di aggiustare il componente.
+Le loro firme sono `EmptyStateProps` e `InputProps`, nello stesso contratto (in `contracts/blog.ts`). 
 
 Da un altro terminale avviare:
 
@@ -70,7 +62,7 @@ Se ci sono errori chiedi a Claude di risolverli.
 
 ### Committa e pusha subito
 
-Non aspettare di aver finito anche lo strumento: i tuoi componenti servono agli altri due.
+Non aspettare di aver rifinito tutto: i tuoi componenti servono agli altri due.
 
 ```bash
 git add src/components/ui/
@@ -78,6 +70,8 @@ git commit -m "feat: shared UI components"
 git pull --rebase
 git push origin main
 ```
+
+> `git pull --rebase` scarica quello che hanno pushato gli altri e rimette il tuo commit in cima: la storia resta lineare, senza commit «Merge branch…».
 
 Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git pull --rebase` e ripusha: state toccando file diversi, quindi non ci sono conflitti veri.
 
@@ -94,11 +88,11 @@ Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git p
 
 **Cosa stai per fare:** scriverti una skill tua.
 
-Una skill è una procedura scritta in un file: la scrivi una volta, e da lì in poi la lanci con un comando invece di rispiegare a Claude come si fa. `/new-component`, che hai appena usato tre volte, è esattamente questo — l'ha scritta qualcun altro per te.
+Una skill è una procedura scritta in un file: la scrivi una volta, e da lì in poi la lanci con un comando invece di rispiegare a Claude come si fa. `/new-component`, che hai appena usato tre volte, è esattamente questo: l'ha scritta qualcun altro per te.
 
 La tua si chiama **`/new-page`** e ti serve a scrivere una pagina del sito pubblico che **carica dati da un'API**: nel repo quelle pagine esistono già, ma sono segnaposto vuoti, e tocca a te riempirle.
 
-**La userai due volte oggi**: per la home e per la pagina del singolo post. Sono i due pezzi più lunghi del tuo pomeriggio, e la seconda volta ti costa un prompt di una riga — è lì che si ripaga il quarto d'ora che ci metti adesso.
+**La userai due volte oggi**: per la home e per la pagina del singolo post. Sono i due pezzi più lunghi del tuo pomeriggio, e dalla seconda volta che userai questa skill ti richiederà solo un prompt di una riga — è lì che si ripaga il quarto d'ora che ci metti adesso.
 
 > La terza pagina che scriverai, quella del «post non esiste», **non** la farai con la skill: non carica niente, e una skill usata dove non serve è solo un giro più lungo.
 
@@ -151,3 +145,9 @@ Gli altri due stanno scrivendo file diversi dentro `.claude/`, quindi anche qui 
 - [ ] la tua skill è su `main`
 
 Appena hanno pushato anche gli altri due, tutti e tre insieme: [`02-si-allinea.md`](02-si-allinea.md).
+
+---
+
+# AIUTA I TUOI COLLEGHI
+
+Se hai finito prima degli altri, dai una mano ai tuoi colleghi

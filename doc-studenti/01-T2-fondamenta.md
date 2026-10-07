@@ -5,16 +5,6 @@
 
 # T2 · Le fondamenta
 
-Due cose, in quest'ordine: **i tuoi due componenti**, poi **il tuo strumento**, il subagent `smoke-test` — l'unico dei tre a servire a tutta la squadra. Quando li hai pushati tutti e due, ci si rivede in [`02-si-allinea.md`](02-si-allinea.md).
-
-> **Intanto:** T1 scrive `PostCard`, `EmptyState` e `Input` più la skill `/new-page`, T3 scrive `Field` più la skill `/new-form`. Nessuno dei due tocca i tuoi file.
-
-Obiettivo della mattina: **quando comincerete a lavorare da soli, non dovrà mancare niente a nessuno.**
-
-> Se sei in ritardo, sfora sui componenti: un componente brutto si sistema dopo, uno strumento che non hai scritto non lo userai mai.
-
----
-
 ## Passo 1 · I tuoi componenti
 
 | Componente | Chi lo userà |
@@ -24,7 +14,7 @@ Obiettivo della mattina: **quando comincerete a lavorare da soli, non dovrà man
 
 `Button` lo scrivi tu e lo userà anche T3 nel suo form: è il contratto che tiene insieme le due cose, non un accordo a voce.
 
-Nel repo ci sono già tre skill pronte: **`/new-component`**, che fa esattamente questo, più **`/commit`** e **`/pr`** che userete tutto il giorno. Aprile adesso, sono tre minuti — `/new-component` ti serve anche come modello al passo 2.
+Nel repo ci sono già tre skill pronte: **`/new-component`**, per creare nuovi componenti, più **`/commit`** e **`/pr`** che userete tutto il giorno. Aprile adesso, sono tre minuti — `/new-component` ti serve anche come modello al passo 2.
 
 **Soluzione / Prompt** — comincia dal primo:
 
@@ -58,7 +48,7 @@ Se ci sono errori chiedi a Claude di risolverli.
 
 ### Committa e pusha subito
 
-Non aspettare di aver finito anche lo strumento: i tuoi componenti servono agli altri due.
+Non aspettare di aver finito tutta la sezione: i tuoi componenti servono agli altri due.
 
 ```bash
 git add src/components/ui/
@@ -66,6 +56,8 @@ git commit -m "feat: shared UI components"
 git pull --rebase
 git push origin main
 ```
+
+> `git pull --rebase` scarica quello che hanno pushato gli altri e rimette il tuo commit in cima: la storia resta lineare, senza commit «Merge branch…».
 
 Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git pull --rebase` e ripusha: state toccando file diversi, quindi non ci sono conflitti veri.
 
@@ -78,17 +70,15 @@ Se `git push` ti rifiuta perché nel frattempo ha pushato un altro, rifai `git p
 
 ---
 
-## Passo 2 · Il tuo strumento — il subagent `smoke-test`
+## Passo 2 · Il tuo subagent `smoke-test`
 
-**Cosa stai per fare:** scriverti uno strumento tuo, che poi usa tutta la squadra.
+**Cosa stai per fare:** scrivere un agente, che poi usa tutto il team.
 
 Il tuo si chiama **`smoke-test`** e fa una cosa sola: chiama tutte le pagine del sito e ti dice quali rispondono e quali no.
 
-**Lo userete tutti e tre**: ognuno alla fine del suo track, per controllare di non aver rotto niente, e poi tutti insieme a fine giornata sul progetto mergiato — è quello il momento in cui, se è tutto verde, avete finito davvero. Tu puoi rilanciarlo quando vuoi, dopo ogni pagina: costa un comando. Il tuo track è il più corto: questo è il pezzo che dai alla squadra in cambio.
+**Lo userete tutti e tre**: ognuno alla fine del suo track, per controllare di non aver rotto niente, e poi tutti insieme a fine giornata sul progetto mergiato — è quello il momento in cui, se è tutto verde, avete finito davvero. Tu puoi rilanciarlo quando vuoi, dopo ogni pagina: costa un comando. 
 
-**È un subagent, non una skill**, e la differenza è tutta qui: fa un lavoro rumoroso — cinque o sei `curl` di fila — che gira in una sessione separata, e a te torna solo il verdetto. Una skill invece è una procedura che esegue Claude nella tua sessione, come `/new-component` che hai appena usato due volte.
-
-**Ne scrivi uno solo.** Gli altri due stanno scrivendo il loro, e ve li scambiate col `git pull` dell'allineamento.
+**È un subagent, non una skill**, e la differenza è tutta qui: esegue un lavoro in background, cinque o sei `curl` di fila, e gira in una sessione separata: a te torna solo il verdetto! Una skill invece è una procedura che esegue Claude nella tua sessione, come `/new-component` che hai appena usato due volte.
 
 Tre cose da fare, in ordine:
 
@@ -123,7 +113,7 @@ rispondono 200.
 Non avviare il dev server: se non risponde niente, dillo e basta.
 ```
 
-**Provalo subito**, con `npm run dev` attivo in un altro terminale.
+**Provalo subito**, ma assicurati che `npm run dev` sia attivo in un altro terminale. Il sito dev'essere visibile
 
 **Prompt:**
 
@@ -131,7 +121,32 @@ Non avviare il dev server: se non risponde niente, dillo e basta.
 Usa il subagent smoke-test
 ```
 
-Adesso deve dirti che `/`, `/admin/posts`, `/admin/posts/new` e le due API rispondono 200 — le pagine sono i segnaposto — e che `/posts/<slug>` e `/admin/posts/po-001` non rispondono, perché quelle due pagine non le ha ancora scritte nessuno. **È il risultato giusto**: fra un'ora saranno tutte verdi, e sarà la prova che avete finito.
+Adesso deve risponderti più o meno così:
+
+```
+| Rotta                                 | Codice |
+|---------------------------------------|--------|
+| /                                     | 200    |
+| /admin/posts                          | 200    |
+| /admin/posts/new                      | 200    |
+| /admin/posts/po-001                   | 404    |
+| /api/posts                            | 200    |
+| /api/posts?status=published           | 200    |
+| /posts/il-contratto-prima-del-codice  | 404    |
+
+Non rispondono 200: /admin/posts/po-001, /posts/il-contratto-prima-del-codice
+```
+
+**I due 404 sono il risultato giusto**, non un errore tuo: sono le due pagine che nel progetto non esistono ancora.
+
+| Rotta in 404 | La pagina che manca | Chi la scrive |
+|---|---|---|
+| `/posts/<slug>` | `src/app/posts/[slug]/page.tsx`, il dettaglio di un post | T1 |
+| `/admin/posts/po-001` | `src/app/admin/posts/[id]/page.tsx`, la modifica di un post | T3 |
+
+Le altre rispondono 200 perché le pagine segnaposto e le API ci sono già. Fra un'ora la tabella sarà tutta a 200, e sarà la prova che avete finito.
+
+> La grafica della tabella può cambiare (bordi, ordine delle righe, la riga finale scritta in un altro modo): conta che i codici siano questi.
 
 ### Committa e pusha
 
@@ -158,3 +173,10 @@ Gli altri due stanno scrivendo file diversi dentro `.claude/`, quindi anche qui 
 - [ ] il tuo subagent è su `main`, provato
 
 Appena hanno pushato anche gli altri due, tutti e tre insieme: [`02-si-allinea.md`](02-si-allinea.md).
+
+
+---
+
+# AIUTA I TUOI COLLEGHI
+
+Se hai finito prima degli altri, dai una mano ai tuoi colleghi
