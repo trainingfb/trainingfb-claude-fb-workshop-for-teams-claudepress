@@ -5,7 +5,7 @@
 
 # T2 · CMS, l'elenco
 
-Consegni la tabella dei post del backoffice e l'eliminazione. È il pezzo più corto dei tre: in cambio scrivi il subagent `smoke-test`, l'unico strumento della giornata che useranno tutti e tre.
+Consegni la tabella dei post del backoffice e l'eliminazione.
 
 > **Intanto:** T1 costruisce il sito pubblico, T3 il form. Il link *Modifica* della tua tabella porta a una pagina di T3: mettilo lo stesso, anche se per ora dà 404.
 
@@ -29,6 +29,8 @@ git checkout -b t2/cms-elenco
 ```bash
 curl -s localhost:3000/api/posts/po-001
 ```
+
+Dovrebbe restituirti un JSON con la struttura dei post.
 
 **Cosa ti torna la rotta della tua tabella**, slug e stato di ognuno:
 
@@ -71,6 +73,8 @@ ROUTES.adminPostNew.
 Ordina per data di modifica.
 Se non ci sono post usa EmptyState. Tutti i testi in italiano.
 ```
+
+> Se ti viene comunicata un'incoerenza sull'ordinamento e Claude ti fa una domanda, prendi tu una decisione.
 
 Apri <http://localhost:3000/admin/posts>. Apri anche <http://localhost:3000/admin>: ti porta a `/admin/posts`. Quel redirect è già scritto in `src/app/admin/page.tsx`, ed è nella tua area.
 
@@ -122,7 +126,7 @@ In Claude Code:
 
 È una delle skill che trovi già nel repo: controlla che `npm run check` passi, fa il push e apre la PR in draft, con titolo e descrizione scritti leggendo il tuo diff.
 
-A mano, se preferisci vedere i comandi:
+Se preferisci farla a mano invece di usare la skill `/pr`, questi sono i comandi:
 
 ```bash
 git push -u origin t2/cms-elenco
@@ -142,7 +146,7 @@ Ogni commit che pushi su questo branch finisce **nella stessa PR**, da solo:
 git push
 ```
 
-> *Draft* vuol dire «non è finita, non mergiatela». Quando il tuo pezzo è a posto la sposti in *Ready for review* con il bottone sulla pagina — oppure lo dici e basta, tanto i merge li fate insieme, tutti allo stesso schermo.
+> *Draft* vuol dire «non è finita, non mergiatela». Lo faremo dopo.
 
 **Verifica manuale**
 
@@ -151,9 +155,13 @@ git push
 
 ---
 
-## Passo 5 · L'eliminazione
+## Passo 5 · L'eliminazione di un post
+
+Devi effettuare questo step solo se non vedi un pulsante ELIMINA nell'area admin.
+Se invece è presente e ti permette di eliminare un post, allora non serve farlo
 
 È l'unico pezzo interattivo che hai, quindi isolalo: **la pagina resta server**, il bottone diventa client.
+(è una dinamica di NextJS. Non preoccuparti se non è chiaro)
 
 NOTA: questo step potrebbe esser già stato effettuato in automatico dallo step #3.
 Quindi verifica prima che il pulsante ELIMINA funzioni e in tal caso non serve che metti in pratica questo step.
@@ -164,8 +172,7 @@ Quindi verifica prima che il pulsante ELIMINA funzioni e in tal caso non serve c
 ```
 Scrivi src/app/admin/posts/_list/DeletePostButton.tsx, un client component con una riga
 di commento che dice perché è client.
-Riceve l'id del post, chiama DELETE su API_ROUTES.post(id), e a risposta ok
-aggiorna l'elenco con router.refresh().
+Riceve l'id del post, chiama DELETE su API_ROUTES.post(id), e a risposta ok aggiorna l'elenco con router.refresh().
 Durante la chiamata il bottone resta disabilitato.
 Usa Button con variant "danger".
 Poi usalo in ogni riga della tabella in page.tsx.
@@ -194,6 +201,8 @@ Lancia il tuo subagent. Serve il dev server attivo.
 ```
 Usa il subagent smoke-test
 ```
+
+> Le tue rotte devono rispondere 200. `/posts/<slug>` e `/admin/posts/<id>` invece daranno ancora **404**: sono le pagine di T1 e T3, stanno sui loro branch e arrivano su `main` solo con i merge di [`04-si-chiude.md`](04-si-chiude.md). Tutte a 200 le vedrete lì.
 
 Poi, a mano:
 
@@ -232,6 +241,8 @@ Se invece elenca dei file, committa prima con `/commit` e poi pusha.
 - [ ] la PR è ancora in **draft**
 
 ---
+
+# Bonus
 
 ## Passo 7 · I bonus, se ti avanza tempo
 
@@ -284,6 +295,8 @@ Usa Button con variant "secondary". Poi usalo in ogni riga della tabella.
 - [ ] quello stesso post compare in `curl -s "localhost:3000/api/posts?status=published"` — è la rotta della home di T1, che vedrai dopo il merge
 - [ ] lo riporto in bozza e da quel `curl` sparisce
 
+Ricordati di committare con `/commit`
+
 ### Bonus 2 · Il filtro per stato
 
 Tre link in cima alla tabella — *Tutti · Bozze · Pubblicati* — che filtrano.
@@ -298,11 +311,12 @@ Pubblicati (?status=published), con quello attivo evidenziato.
 La pagina resta un server component.
 ```
 
-Niente stato client e niente `useEffect`: è un `searchParam`, e la pagina si ridisegna da sola. È il motivo per cui vale la pena farlo.
+Ricordati di committare con `/commit`
+
 
 ### Bonus 3 · Il riepilogo in testa
 
-Una riga sopra la tabella: «6 post — 3 pubblicati, 3 bozze». Due `filter` e una stringa, tutto dentro `page.tsx`.
+Una riga sopra la tabella coni totali: «6 post — 3 pubblicati, 3 bozze». 
 
 **Prompt**
 

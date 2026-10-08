@@ -24,15 +24,21 @@ git checkout -b t1/sito
 
 Prima di scrivere la prima riga, un minuto che te ne fa risparmiare dieci.
 
-**Com'è fatto un post** — i nomi dei campi sono quelli del tipo `Post` del contratto:
+**Com'è fatto un post** — i nomi dei campi sono quelli del tipo `Post` del contratto (`contracts/blog.ts`):
 
-Avvia in un terminale questo comando e guarda la risposta:
+Per farlo puoi avviare nel terminale questo comando e guarda la risposta:
 
 ```bash
 curl -s localhost:3000/api/posts/po-001
 ```
 
-**Quanti e di che tipo** te ne torna la rotta che userai in home:
+Risultato:
+
+```
+{"id":"po-001","slug":"benvenuti-su-claudepress","title":"Benvenuti su ClaudePress","excerpt":"Un blog con il suo CMS, costruito in tre persone e due ore.","content":"Questo è il primo post del seed.\n\nSe lo stai leggendo su una pagina che hai scritto tu, vuol dire che la home funziona e che le API rispondono.\n\nDa qui in poi è tutto tuo: cancellalo, modificalo, o lascialo lì come promemoria di dove sei partito.","author":"Redazione","status":"published","createdAt":"2026-03-01T08:00:00.000Z","updatedAt":"2026-03-01T08:00:00.000Z"}%    
+```
+
+**Quanti post ci sono, lo slug e lo stato**
 
 ```bash
 curl -s "localhost:3000/api/posts?status=published" \ | grep -oE '"id":"[^"]*"|"slug":"[^"]*"|"status":"[a-z]*"' | paste - - -
@@ -72,7 +78,9 @@ Poi apri <http://localhost:3000> e guarda.
 - [ ] **non** vedi le bozze
 - [ ] cliccando un post vai su `/posts/<slug>` — per ora è 404, la scrivi al passo dopo
 
-Se la home è vuota o mostra le bozze, controlla che la fetch punti a `API_ROUTES.publishedPosts`, passi da `apiUrl()` e abbia `cache: "no-store"`.
+Se la home è vuota o mostra le bozze:
+1. prova un hard refresh della pagina del browser
+2. controlla che la fetch punti a `API_ROUTES.publishedPosts`, passi da `apiUrl()` e abbia `cache: "no-store"`.
 
 Lancia su terminale: 
 
@@ -80,7 +88,9 @@ Lancia su terminale:
 npm run check
 ```
 
-E committa. Puoi usare la skill `/commit` che trovi nella cartella `.claude`
+E committa. 
+Ora puoi usare la skill `/commit` che trovi nella cartella `.claude`
+
 ```bash
 /commit
 ```
@@ -90,7 +100,7 @@ E committa. Puoi usare la skill `/commit` che trovi nella cartella `.claude`
 
 ## Passo 4 · Apri la PR — adesso, non alla fine
 
-La home funziona: basta così per aprirla, il resto lo aggiungi dopo.
+La home funziona: basta così, il resto lo aggiungi dopo.
 
 **Cos'è una pull request.** È una richiesta di portare il tuo branch dentro `main`: una pagina su GitHub che mostra cosa hai cambiato e dove gli altri due possono guardare e commentare. **Aprirla non mergia niente** — il merge è un momento separato, e oggi lo farete insieme alla fine.
 
@@ -104,7 +114,7 @@ Su un terminale:
 git status
 ```
 
-Deve essere pulito. Se no, `/commit` — anche quella è già nel repo — e poi riprova.
+Deve essere pulito. Se no, usa la skill `/commit` e poi riprova.
 
 ### 2. Manda il branch su GitHub e apri la PR
 
@@ -116,7 +126,7 @@ Su claude code:
 
 È una delle skill che trovi già nel repo: controlla che `npm run check` passi, fa il push e apre la PR in draft, con titolo e descrizione scritti leggendo il tuo diff.
 
-A mano, se preferisci vedere i comandi:
+Se preferisci farla a mano invece di usare la skill `/pr`, questi sono i comandi:
 
 ```bash
 git push -u origin t1/sito
@@ -130,7 +140,9 @@ Sulla pagina della PR, la scheda **Files changed** mostra tutto quello che hai t
 
 ### 4. Da qui in poi non serve riaprirla
 
-Ogni commit che pushi su questo branch finisce **nella stessa PR**, da solo:
+Ogni commit che pushi su questo branch finisce **nella stessa PR**, da solo.
+
+Quindi dopo ogni modifica potrai usare:
 
 ```bash
 /commit
@@ -172,6 +184,8 @@ In claude:
 ```bash
 /commit
 ```
+
+> Non serve fare git push al momento
 
 ---
 
@@ -222,6 +236,8 @@ In claude code:
 Usa il subagent smoke-test
 ```
 
+> Le tue rotte devono rispondere 200. `/admin/posts/<id>` invece darà ancora **404**: è la pagina di T3, sta sul suo branch e arriva su `main` solo con i merge di [`04-si-chiude.md`](04-si-chiude.md). Tutte a 200 le vedrete lì.
+
 Poi, a mano:
 
 **Verifica**
@@ -250,7 +266,8 @@ git push
 
 Se invece elenca dei file, committa prima con `/commit` e poi pusha.
 
-**La PR resta in draft, e resta una sola.** Non mergiarla adesso e non aprirne una seconda: i merge si fanno tutti insieme in [`04-si-chiude.md`](04-si-chiude.md), dove la si segna pronta con `gh pr ready`. Se hai altro da aggiungere, anche dopo la pausa, va nello stesso branch: `/commit` e `git push`, e finisce da solo nella PR che hai già aperto.
+**La PR resta in draft, e resta una sola.** Non mergiarla adesso e non aprirne una seconda: i merge si fanno tutti insieme in [`04-si-chiude.md`](04-si-chiude.md), dove la si segna pronta con `gh pr ready`. 
+Se hai altro da aggiungere, anche dopo la pausa, va nello stesso branch: `/commit` e `git push`, e finisce da solo nella PR che hai già aperto.
 
 **Verifica**
 
@@ -259,6 +276,8 @@ Se invece elenca dei file, committa prima con `/commit` e poi pusha.
 - [ ] la PR è ancora in **draft**
 
 ---
+
+# Bonus (non necessari)
 
 ## Passo 8 · I bonus, se ti avanza tempo
 
@@ -308,16 +327,16 @@ Usa Field, Input e Button, importati da @/components/ui/Field, @/components/ui/I
 e @/components/ui/Button. Testi in italiano, Tailwind.
 ```
 
-#### Aggiungi un messaggio di conferma
+#### Aggiungi il link dalla home
 
-Un messaggio nella pagina e non un `alert()`: l'alert blocca tutto, non si può stilare, e in demo si vede male.
+In fondo alla **tua home**, non nel `layout.tsx`: quello è condiviso e congelato.
 
-Poi aggiungi il link **dalla tua home**, in fondo — non dal `layout.tsx`, che è condiviso e congelato.
-
-**Prompt**
+**Prompt:**
 
 ```
-Inserisci un pulsante "Scrivici" nella home page, in fondo, che porta alla pagina /contatti.
+In fondo a src/app/page.tsx aggiungi un link "Scrivici" verso /contatti,
+con next/link. Non usare Button: senza onClick non serve, e la home resta
+un server component.
 ```
 
 **Verifica manuale**
@@ -327,26 +346,17 @@ Inserisci un pulsante "Scrivici" nella home page, in fondo, che porta alla pagin
 - [ ] mando compilato → il form sparisce e compare la conferma
 - [ ] dalla home ci arrivo con un click
 
-### Bonus 2 · La data in italiano
-
-`12 marzo 2026` invece di `2026-03-12T08:00:00.000Z`. Tocca solo le tue due pagine.
-
-**Prompt:**
-
-```
-Scrivi src/app/posts/formatDate.ts: una funzione che prende una stringa ISO e
-torna la data in italiano, per esempio "12 marzo 2026". Usa Intl.DateTimeFormat
-con locale it-IT, niente librerie.
-Poi usala nella home e nella pagina del post.
-```
-
-### Bonus 3 · Il tempo di lettura
+### Bonus 2 · Il tempo di lettura
 
 «3 minuti di lettura» sotto al titolo del post: parole diviso 200, arrotondato per eccesso, minimo 1. Sta tutto dentro `src/app/posts/[slug]/page.tsx`.
 
-### Bonus 4 · Gli stati di caricamento
+**Prompt**: fallo tu : )
 
-Un `loading.tsx` per la home e uno per la pagina del post, con uno scheletro grigio al posto del contenuto. Su localhost si vedono per un istante, ma sono due file di tre righe e in demo fanno la differenza fra «funziona» e «è finito».
+### Bonus 3 · Gli stati di caricamento
+
+Un `loading.tsx` per la home e uno per la pagina del post, con uno scheletro grigio al posto del contenuto. Su localhost si vedono per un istante perché i dati sono locali. In produzione invece fa la differenza tra una pessima e una discreta user experience.
+
+**Prompt**: fallo tu : )
 
 ---
 

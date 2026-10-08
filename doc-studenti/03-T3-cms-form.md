@@ -5,9 +5,7 @@
 
 # T3 · CMS, il form
 
-Consegni la creazione e la modifica dei post. È il pezzo più lungo della giornata.
-
-**Non partire dalle pagine: parti dal form.** Le due pagine, dopo, sono dieci minuti in tutto.
+Ti occupi della creazione e la modifica dei post nell'area admin. È il pezzo più lungo della giornata.
 
 > **Intanto:** T1 costruisce il sito pubblico, T2 la tabella del CMS. Il link *Modifica* della sua tabella punta alla tua pagina `/admin/posts/[id]`: finché non la scrivi dà 404, ed è normale.
 
@@ -26,7 +24,7 @@ git checkout -b t3/cms-form
 
 ## Passo 2 · Guarda cosa rifiuta l'API
 
-Manda apposta un titolo troppo corto:
+Fai una prova e cerca di salvare un titolo troppo corto che non passa la validazione (spoiler: avrai un errore):
 
 ```bash
 curl -s -X POST localhost:3000/api/posts -H 'content-type: application/json' -d '{"title":"ab","excerpt":"","content":"x","author":"io","status":"draft"}'
@@ -65,15 +63,14 @@ Tutte le etichette e i messaggi in italiano.
 
 ## Passo 4 · Provalo subito
 
-Apri <http://localhost:3000/admin/posts/new> e prova questi tre casi:
+Apri <http://localhost:3000/admin/posts/new> e prova questi casi:
 
 **Verifica manuale**
 
 - [ ] salvo con il titolo di due caratteri → l'errore compare **sotto al campo titolo**, non in cima
 - [ ] salvo con tutto giusto → il post viene creato e finisco su `/admin/posts`
-- [ ] clicco *Salva* due volte in fretta → **non** si creano due post
 
-Se l'errore compare in cima alla pagina invece che sotto al campo, è il momento di sistemare la skill `/new-form`: la userai ancora.
+Se l'errore compare in cima alla pagina invece che sotto al campo, è il momento di sistemare la skill `/new-form`.
 
 ### Il post c'è davvero?
 
@@ -133,7 +130,7 @@ In Claude Code:
 
 È una delle skill che trovi già nel repo: controlla che `npm run check` passi, fa il push e apre la PR in draft, con titolo e descrizione scritti leggendo il tuo diff.
 
-A mano, se preferisci vedere i comandi:
+Se preferisci farla a mano invece di usare la skill `/pr`, questi sono i comandi:
 
 ```bash
 git push -u origin t3/cms-form
@@ -161,7 +158,7 @@ git push
 ```
 
 
-> *Draft* vuol dire «non è finita, non mergiatela». Quando il tuo pezzo è a posto la sposti in *Ready for review* con il bottone sulla pagina — oppure lo dici e basta, tanto i merge li fate insieme, tutti allo stesso schermo.
+> *Draft* vuol dire «non è finita, non mergiatela». Lo faremo dopo
 
 **Verifica manuale**
 
@@ -173,7 +170,7 @@ git push
 ## Passo 6 · La pagina di modifica
 
 Questa è la pagina che si aprirà quando si clicca su Modifica della lista.
-La lista non è ancora visibile perché la sta creando un tuo collega.
+Importante: La lista non è ancora visibile perché la sta creando un tuo collega.
 
 **Prompt:**
 
@@ -212,6 +209,8 @@ Lancia il subagent che ha scritto T2: dopo il `git pull` delle fondamenta ce l'a
 Usa il subagent smoke-test
 ```
 
+> Le tue rotte devono rispondere 200. `/posts/<slug>` invece darà ancora **404**: è la pagina di T1, sta sul suo branch e arriva su `main` solo con i merge di [`04-si-chiude.md`](04-si-chiude.md). Tutte a 200 le vedrete lì.
+
 Poi, a mano:
 
 **Verifica**
@@ -224,7 +223,7 @@ Poi, a mano:
 - [ ] `npm run check` passa
 - [ ] hai toccato solo `src/app/admin/posts/new/`, `[id]/` e `_components/`
 
-La home di T1 e la tabella di T2 le vedrai con il tuo form dentro solo dopo il merge, in [`04-si-chiude.md`](04-si-chiude.md): sul tuo branch sono ancora segnaposto, ed è normale.
+La home di T1 e la tabella admin con l'elenco dei post di T2 le vedrai con il tuo form dentro solo dopo il merge, in [`04-si-chiude.md`](04-si-chiude.md): sul tuo branch sono ancora segnaposto, ed è normale.
 
 Hai il pezzo più lungo: se arrivi qui in tempo, hai già vinto. Se ti avanza, i bonus sono qui sotto.
 
@@ -253,6 +252,8 @@ Se invece elenca dei file, committa prima con `/commit` e poi pusha.
 - [ ] la PR è ancora in **draft**
 
 ---
+
+# Bonus
 
 ## Passo 8 · I bonus, se ti avanza tempo
 
@@ -329,7 +330,7 @@ INVENTALO TU
 
 ### Bonus 4 · Salva da tastiera
 
-`Cmd+S` su Mac, `Ctrl+S` su Windows, salvano il form invece di aprire il salvataggio del browser. Tre righe, e chi scrive molto te ne è grato.
+Abilita il `Ctrl+S` per salvare il form da tastiera. 
 
 
 **Prompt**

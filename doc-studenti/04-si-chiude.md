@@ -24,7 +24,7 @@ git checkout main && git pull
 
 Poi aprite il `CLAUDE.md`, sezione *«Regole aggiunte dal team»*, e scrivetele adesso. Una riga ciascuna, **specifica**.
 
-Così:
+Così, in fondo a `CLAUDE.md`:
 
 ```md
 Le pagine del sito fanno fetch con `cache: "no-store"`. Senza, un post creato nel backoffice non compare in home e sembra un bug delle API.
@@ -41,8 +41,7 @@ La differenza è che la prima si può seguire e la seconda no.
 E si committa subito, su `main`:
 
 ```bash
-git add CLAUDE.md
-git commit -m "docs: team rules"
+git add CLAUDE.md && git commit -m "docs: team rules"
 git push origin main
 ```
 
@@ -51,7 +50,7 @@ git push origin main
 - [ ] almeno una regola scritta, nata da un errore vero
 - [ ] committata su `main`, non su un branch
 
-> Se la sezione è ancora vuota, non insistete con la domanda: **riaprite i prompt di oggi** e cercate una frase che compare in più di uno — «testi in italiano», `cache: "no-store"`, «le rotte da `API_ROUTES`», «usa `Field` e `Input`». Quelle frasi sono regole travestite da istruzioni: le avete ripetute a mano tutto il giorno perché non erano scritte dove Claude le legge da solo.
+
 
 ---
 
@@ -70,7 +69,7 @@ Quattro, cinque, otto volte a testa. E non è una regola: una regola è una cosa
 
 > Metà del lavoro ce l'avete già: `/commit` lancia il check, si ferma se fallisce e scrive il messaggio leggendo il diff. Quello che avete ripetuto a mano ogni volta è il `git push` subito dopo — ed è anche quello che qualcuno si è dimenticato, visto che a fine track è servito un `git status -sb` per scoprirlo.
 
-Sul portatile guida, sempre su `main`, creare una skill con il seguente prompt:
+Sul portatile guida, sempre su `main`, creare una skill `/ship` con il seguente prompt:
 
 **Prompt:**
 
@@ -122,12 +121,25 @@ Se vi chiede su quale branch committarlo, rispondete su `main`.
 
 Per ogni PR, prima di mergiare, guardate **quali file tocca** — non il diff riga per riga. I branch degli altri due non sono su questo portatile, quindi si chiede a GitHub:
 
+Il modo più semplice è andare nella sezione Pull Requests del vostro repository su GitHub.com.
+Tuttavia potete provare anche da terminale:
+
 ```bash
-gh pr list  # i numeri delle tre PR. Premi `Q` per uscire.
-gh pr diff <numero> --name-only
+# elenca le PR con un numero (l'ID della PR). Premi `Q` per uscire.
+gh pr list  
+
+# Mostra quali file ha modificato una specifica PR
+gh pr diff <numero|id> --name-only
+
+# ad esempio, per vedere i file modificati dalla PR #3:
+# gh pr diff 3 --name-only 
 ```
 
-Poi:
+---
+
+# TIP (non necessario)
+
+Non è necessario farlo durante questo workshop, ma nella realtà dovreste:
 
 1. confrontate i path con la tabella «Aree di proprietà» del `CLAUDE.md`
 2. se compare qualcosa dell'area condivisa — `src/contracts/`, `src/components/ui/`, `CLAUDE.md` — o di un altro track, **si sistema adesso**, davanti a tutti
@@ -151,6 +163,8 @@ Adesso quel file sul tuo branch è identico a quello di `main`, e siccome una PR
 
 L'unica eccezione è se quella modifica **serve davvero** — senza, il suo codice non gira. Allora si tiene, la si legge a voce, e quella PR si mergia per prima. **Nel dubbio, rimettete il file com'era.**
 
+---
+
 ### Come si mergia
 
 Le PR sono in **draft**, e una draft non si mergia: prima va segnata pronta.
@@ -160,7 +174,7 @@ gh pr ready 1                               # la toglie da draft
 gh pr merge 1 --squash --delete-branch      # mergia e cancella il branch
 ```
 
-Dal browser è la stessa cosa: *Ready for review* → *Squash and merge* → *Delete branch*.
+Dal browser è la stessa cosa: vai in fondo alla pagina, *Ready for review*, → *Squash and merge* → *Delete branch*.
 
 - **`--squash`** mette tutto il lavoro di quel branch in **un commit solo** su `main`. La storia resta leggibile: tre commit, uno per persona, invece di quaranta.
 - **`--delete-branch`** cancella il branch su GitHub. Quello locale resta: lo cancellate dopo, o mai, non cambia niente.
@@ -273,3 +287,20 @@ La frase da dire ad alta voce, mentre lo fate, è sempre quella:
 > Lo creo come bozza, e in home non compare.
 
 Due minuti in tutto. Se una schermata è rossa non improvvisate una scusa: ditelo, e dite in quale delle tre aree sta — tanto lo `smoke-test` del passo prima l'ha già scritto.
+
+---
+
+## Passo 6 · Portatevelo a casa (TUTTI SUI LORO PC)
+
+Il progetto intero, adesso, ce l'ha solo il portatile guida. Gli altri due, ognuno sul suo:
+
+```bash
+git checkout main && git pull
+npm run check
+npm run dev
+```
+
+**Verifica**
+
+- [ ] su tutti e tre i portatili `main` gira, con le pagine di tutti e tre
+- [ ] nel `CLAUDE.md` ci sono le «Regole aggiunte dal team»
